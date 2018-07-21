@@ -4,7 +4,8 @@
   "description": "The 2nd project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config ./config/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,22 @@
   },
   "homepage": "https://github.com/Faze18/ProjectX#readme",
   "dependencies": {
+    "choices.js": "^3.0.4",
+    "css-loader": "^1.0.0",
     "eslint": "^5.1.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "extract-loader": "^2.0.1",
+    "file-loader": "^1.1.11",
+    "handlebars-loader": "^1.7.0",
     "mysql2": "^1.5.3",
+    "node-sass": "^4.9.2",
+    "nodemon": "^1.18.3",
+    "npm": "^6.2.0",
+    "sass-loader": "^7.0.3",
     "sequelize": "^4.38.0",
-    "sequelize-cli": "^4.0.0"
+    "sequelize-cli": "^4.0.0",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.11.2"
   }
 }

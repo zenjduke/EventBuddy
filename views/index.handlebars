@@ -1,11 +1,209 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
+<!-- Navigation Bar -->
+<div class="w3-bar w3-white w3-large">
+  <a href="home" class="w3-bar-item w3-button w3-teal w3-mobile"><i class="fa fa-street-view w3-margin-right"></i>EventBuddy</a>
+  <a href="discover" class="w3-bar-item w3-button w3-mobile">Discover</a>
+  <a href="events" class="w3-bar-item w3-button w3-mobile">Live Events</a>
+
+  <a onclick="document.getElementById('register').style.display='block'" class="w3-bar-item w3-button w3-right w3-teal w3-mobile">Sign Up</a>
+  <a onclick="document.getElementById('login').style.display='block'" class="w3-bar-item w3-button w3-right w3-teal w3-mobile">Log In</a>
+</div>
+
+
+<!-- Header -->
+<header class="w3-display-container w3-content" style="max-width:1500px;">
+  <img class="w3-image" src="assets/img/concert1.jpg" alt="concert-scene" style="min-width:1000px" width="1500" height="800">
+  <div class="w3-display-middle w3-padding w3-col l8 m10 happening-now">
+    <div class="photobanner">
+    	<img class="first" src="assets/img/avatars/avatar1.png" alt="" />
+    	<img src="assets/img/avatars/avatar2.png" alt="" />
+    	<img src="assets/img/avatars/avatar3.png" alt="" />
+    	<img src="assets/img/avatars/avatar4.png" alt="" />
+    	<img src="assets/img/avatars/avatar5.png" alt="" />
+    	<img src="assets/img/avatars/avatar6.png" alt="" />
+    	<img src="assets/img/avatars/avatar7.png" alt="" />
+    	<img src="assets/img/avatars/avatar8.png" alt="" />
+    	<img src="assets/img/avatars/avatar9.png" alt="" />
+    	<img src="assets/img/avatars/avatar10.png" alt=""/>
+      <img src="assets/img/avatars/avatar1.png" alt="" />
+    	<img src="assets/img/avatars/avatar2.png" alt="" />
+    	<img src="assets/img/avatars/avatar3.png" alt="" />
+    	<img src="assets/img/avatars/avatar4.png" alt="" />
+    </div>
+    <div class="w3-container w3-teal">
+      <h2><i class="fa fa-calendar w3-margin-right"></i>Happening Now</h2>
+        <div id="contain">
+          <table class="w3-striped w3-hoverable w3-card-4" border="0" id="table_scroll">
+            {{!-- <tr>
+              <th>Event</th>
+              <th>City</th>
+              <th>Live Stream</th>
+            </tr> --}}
+            <tr>
+              <td>Counting Crows</td>
+              <td>Austin, TX</td>
+              <td><button class="w3-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>Drake</td>
+              <td>Los Angeles, CA</td>
+              <td><button class="w3-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>Margarita Fest</td>
+              <td>Portland, OR</td>
+              <td><button class="w3-btn">View</button></td>
+            </tr>
+          </table>
+        </div> 
+    </div>
+        {{!-- <button class="w3-button w3-center w3-white" type="submit">Get Started</button> --}}
+</header>
+
+<!-- Live Stream -->
+{{!-- <section class="w3-row-padding" id="live">
+
+  <div class="w3-content live-stream" style="max-width:600px">
+
+    <img class="mySlides" src="assets/img/concert2.jpg" style="width:100%">
+    <img class="mySlides" src="assets/img/concert3.jpg" style="width:100%">
+    <img class="mySlides" src="assets/img/concert4.jpg" style="width:100%">
+
+  </div>
+
+</section> --}}
+
+<!-- End page content -->
+
+<!-- Footer -->
+<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+  <h5>Find Us On</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <h6>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">Team X</a></h6>
+</footer>
+
+<!--Log In Modal-->
+
+  <div id="login" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+        <img src="../assets/img/avatars/avatar6.png" alt="Avatar" style="width:25%" class="w3-circle w3-margin-top">
+        <i class="fa fa-user-circle-o"></i>
+      </div>
+
+      <form class="w3-container" action="/action_page.php">
+        <div class="w3-section">
+          <label><b>Username</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+          <label><b>Password</b></label>
+          <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
+          <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+        </div>
+      </form>
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+        <button onclick="document.getElementById('login').style.display='none'" type="button" class="w3-button">Cancel</button>
+        <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+      </div>
+
+    </div>
+  </div>
+
+<!--Register Modal-->
+
+<div id="register" class="w3-modal">
+    <div class="w3-animate-zoom"><br>
+      <form id="msform">
+        <!-- progressbar -->
+        <ul id="progressbar">
+          <li class="active">Account Setup</li>
+          <li>Social Profiles</li>
+          <li>Personal Details</li>
+        </ul>
+        <!-- fieldsets -->
+        <fieldset>
+          <span onclick="document.getElementById('register').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-bottomright close" title="Close Modal">&times;</span>
+          <h2 class="fs-title">Create your account</h2>
+          <h3 class="fs-subtitle">This is step 1</h3>
+          <input type="text" name="fname" placeholder="First Name" />
+          <input type="text" name="lname" placeholder="Last Name" />
+          <input type="text" name="phone" placeholder="Phone" />
+          <input type="text" name="email" placeholder="Email" />
+          <input type="password" name="pass" placeholder="Password" />
+          <input type="password" name="cpass" placeholder="Confirm Password" />
+          <input type="button" name="next" class="next action-button" value="Next" />
+        </fieldset>
+        <fieldset>
+          <h2 class="fs-title">Social Profiles</h2>
+          <h3 class="fs-subtitle">Your presence on the social network</h3>
+          <input type="text" name="twitter" placeholder="Twitter" />
+          <input type="text" name="facebook" placeholder="Facebook" />
+          <input type="text" name="gplus" placeholder="Google Plus" />
+          <input type="text" name="profilepic" placeholder="Add A Link To Your Profile Picture">
+          <input type="button" name="previous" class="previous action-button" value="Previous" />
+          <input type="button" name="next" class="next action-button" value="Next" />
+        </fieldset>
+        <fieldset id="survey">
+          <h2 class="fs-title">Survey</h2>
+          <h3 class="fs-subtitle">Answer a few questions to help us match you with awesome events.</h3>
+              <div class="form-group">
+                <h4>What is your ideal venue size?</h4>
+                    <label for="q1">Select list:</label>
+                    <select class="form-control" id="q1">
+                      <option value="1">1-50 people</option>
+                      <option>50-100 people</option>
+                      <option>100-200 people</option>
+                      <option>200-500 people</option>
+                      <option value="5">>500 people</option>
+                    </select>
+              </div>
+              <hr>
+              <div class="form-group">
+                  <h4>How many people are in your group?</h4>
+                      <label for="q2">Select list:</label>
+                      <select class="form-control" id="q2">
+                        <option value="1">Just me!</option>
+                        <option>2-3</option>
+                        <option>4-6</option>
+                        <option>6-15</option>
+                        <option value="5">15+</option>
+                      </select>
+                </div>
+                <hr>
+                    <h4>What type of events do you like to attend?</h4>
+                    <label for="q2">Select list:</label>
+                    <br>
+                  <select multiple>
+                    <option value="concerts">Concerts</option>
+                    <option value="conferences">Conferences</option>
+                    <option value="theater">Theater</option>
+                    <option value="cinema">Cinema</option>
+                    <option value="food">Food and Drink</option>
+                  </select>
+                  <hr>
+          <input type="button" name="previous" class="previous action-button" value="Previous" />
+          <input type="submit" name="submit" class="submit action-button" value="Submit" />
+        </fieldset>
+      </form>
+    </div>
+</div>
+
+
+
+{{!-- 
+  <h1>{{msg}}</h1>
         <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
+          <div class="form-group concertdiv">
+            <img src="assets/img/concert1.jpg">
             <label for="example-text">Example Text</label>
             <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
           </div>
@@ -23,11 +221,118 @@
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+        </ul> --}}
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="assets/js/index.js"></script>
+
+
+<script>
+
+    // ---- Scrolling Table Of Events
+
+    var my_time;
+    $(document).ready(function() {
+      pageScroll();
+      $("#contain").mouseover(function() {
+        clearTimeout(my_time);
+      }).mouseout(function() {
+        pageScroll();
+      });
+    });
+
+    function pageScroll() {  
+      var objDiv = document.getElementById("contain");
+      objDiv.scrollTop = objDiv.scrollTop + 1;  
+      $('p:nth-of-type(1)').html('scrollTop : '+ objDiv.scrollTop);
+      $('p:nth-of-type(2)').html('scrollHeight : ' + objDiv.scrollHeight);
+      if (objDiv.scrollTop == (objDiv.scrollHeight - 100)) {
+        objDiv.scrollTop = 0;
+      }
+      my_time = setTimeout('pageScroll()', 25);
+    }
+
+    // ---- Multipage Registration Form
+    var current_fs, next_fs, previous_fs; //fieldsets
+    var left, opacity, scale; //fieldset properties which we will animate
+    var animating; //flag to prevent quick multi-click glitches
+
+    $(".next").click(function(){
+      if(animating) return false;
+      animating = true;
+      
+      current_fs = $(this).parent();
+      next_fs = $(this).parent().next();
+      
+      //activate next step on progressbar using the index of next_fs
+      $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+      
+      //show the next fieldset
+      next_fs.show(); 
+      //hide the current fieldset with style
+      current_fs.animate({opacity: 0}, {
+        step: function(now, mx) {
+          //as the opacity of current_fs reduces to 0 - stored in "now"
+          //1. scale current_fs down to 80%
+          scale = 1 - (1 - now) * 0.2;
+          //2. bring next_fs from the right(50%)
+          left = (now * 50)+"%";
+          //3. increase opacity of next_fs to 1 as it moves in
+          opacity = 1 - now;
+          current_fs.css({
+            'transform': 'scale('+scale+')',
+            'position': 'absolute'
+          });
+          next_fs.css({'left': left, 'opacity': opacity});
+        }, 
+        duration: 800, 
+        complete: function(){
+          current_fs.hide();
+          animating = false;
+        }, 
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+      });
+    });
+
+    $(".previous").click(function(){
+      if(animating) return false;
+      animating = true;
+      
+      current_fs = $(this).parent();
+      previous_fs = $(this).parent().prev();
+      
+      //de-activate current step on progressbar
+      $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+      
+      //show the previous fieldset
+      previous_fs.show(); 
+      //hide the current fieldset with style
+      current_fs.animate({opacity: 0}, {
+        step: function(now, mx) {
+          //as the opacity of current_fs reduces to 0 - stored in "now"
+          //1. scale previous_fs from 80% to 100%
+          scale = 0.8 + (1 - now) * 0.2;
+          //2. take current_fs to the right(50%) - from 0%
+          left = ((1-now) * 50)+"%";
+          //3. increase opacity of previous_fs to 1 as it moves in
+          opacity = 1 - now;
+          current_fs.css({'left': left});
+          previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+        }, 
+        duration: 800, 
+        complete: function(){
+          current_fs.hide();
+          animating = false;
+        }, 
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+      });
+    });
+
+    $(".submit").click(function(){
+      return false;
+    })
+
+</script>
