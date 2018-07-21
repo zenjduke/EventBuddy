@@ -1,1 +1,1 @@
-CREATE DATABASE eventbuddy;
+CREATE DATABASE EventBuddy;

@@ -1,6 +1,5 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var db = require("./models");
 
 var PORT = process.env.PORT || 8080;
 
@@ -23,11 +22,12 @@ app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
 
-// app.use(routes);
+// require("./routes/apiRoutes.js")(app);
+require("./routes/htmlRoutes.js")(app);
+
 
 // Start our server so that it can begin listening to client requests.
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });

@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 var fs        = require('fs');
 var path      = require('path');
@@ -32,21 +32,5 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-var event = {
-  selectAll: function (location, category) {
-      $.ajax({
-          url: `http://api.eventful.com/json/events/search?app_key=${process.env.apikey}&location=${location}&category=${category}`,
-          method: GET
-      }
-          , function (err, data) {
-              if (err) {
-                  throw err;
-              }
-              return data.events
-
-          })
-  }
-}
 
 module.exports = db;
