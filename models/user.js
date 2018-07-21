@@ -3,6 +3,11 @@
 module.exports = function(sequelize, Sequelize) {
  
   var User = sequelize.define("User", {
+    id: {
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+    },
 
     firstname: {
         type: Sequelize.STRING,
@@ -37,7 +42,7 @@ module.exports = function(sequelize, Sequelize) {
     status: {
         type: Sequelize.ENUM("active", "inactive"),
         defaultValue: "active"
-    }
+    },
 
   });
   // Syncs with DB
