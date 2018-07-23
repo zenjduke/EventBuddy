@@ -9,18 +9,23 @@ module.exports = function(sequelize, Sequelize) {
         type: Sequelize.INTEGER
     },
 
-    firstname: {
+    fname: {
         type: Sequelize.STRING,
         notEmpty: true
     },
 
-    lastname: {
+    lname: {
         type: Sequelize.STRING,
         notEmpty: true
     },
 
     username: {
         type: Sequelize.TEXT
+    },
+
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
     },
 
     email: {
@@ -30,9 +35,36 @@ module.exports = function(sequelize, Sequelize) {
         }
     },
 
-    password: {
+    phone: {
         type: Sequelize.STRING,
-        allowNull: false
+    },
+
+    profilepic: {
+        type: Sequelize.STRING,
+    },
+
+    twitter: {
+        type: Sequelize.STRING,
+    },
+
+    facebook: {
+        type: Sequelize.STRING,
+    },
+
+    gplus: {
+        type: Sequelize.STRING,
+    },
+
+    venue: {
+        type: Sequelize.STRING,
+    },
+
+    groupsize: {
+        type: Sequelize.STRING,
+    },
+
+    eventtype: {
+        type: Sequelize.STRING,
     },
 
     last_login: {

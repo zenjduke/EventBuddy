@@ -1,45 +1,147 @@
 var db = require("../models");
 
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+module.exports = function(app, passport) {
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
-
-module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
+  // =====================================
+	// HOME PAGE (with login links) ========
+	// =====================================
+    app.get("/", function(req, res) {
     // db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index");
-      // , {
+			res.render("index", { user: req.user});
+			      // , {
         // msg: "Welcome!",
         // examples: dbExamples
       // });
     // });
-  })
+    })
 
-  app.get("/home", function(req, res) {
-    // db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index");
-      // , {
-        // msg: "Welcome!",
-        // examples: dbExamples
-      // });
-    // });
-  })
+    app.get("/signup", function(req, res) {
+      res.render("signup");
+	})
 
+
+    app.get("/discover", function(req, res) {
+		res.render("discover", { user: req.user});
+		})
+
+	app.get("/account-setup", function(req, res) {
+			res.render("account-setup", { user: req.user});
+	})
+
+	app.put("/api/users", function(req, res) {
+		console.log("made it");
+		db.User.update({
+			fname: req.body.fname,
+			lname: req.body.lname,
+			phone: req.body.phone,
+			email: req.body.email,
+			profilepic: req.body.profilepic,
+			twitter: req.body.twitter,
+			facebook: req.body.facebook,
+			gplus: req.body.gplus,
+			venue: req.body.venue,
+			groupsize: req.body.groupsize,
+			eventtype: req.body.eventtype,
+		}, {
+			where: {
+				id: req.body.id
+			}
+			})
+			.then(function(dbUser) {
+				res.json(dbUser);
+			});
+	});
+
+
+// =====================================
+// LOGIN ===============================
+// =====================================
+// show the login form
+
+	app.get('/login', function(req, res) {
+
+		// render the page and pass in any flash data if it exists
+		res.render('login', { message: req.flash('loginMessage') });
+	});
+
+	// process the login form
+	app.post('/login', passport.authenticate('local-login', {
+			successRedirect : '/profile', // redirect to the secure profile section
+			failureRedirect : '/login', // redirect back to the signup page if there is an error
+			failureFlash : true // allow flash messages
+		}),
+		function(req, res) {
+			console.log("hello");
+
+			if (req.body.remember) {
+				req.session.cookie.maxAge = 1000 * 60 * 3;
+			} else {
+				req.session.cookie.expires = false;
+			}
+		res.redirect('/');
+	});
+
+// =====================================
+// SIGNUP ==============================
+// =====================================
+// show the signup form
+
+	app.get('/signup', function(req, res) {
+		// render the page and pass in any flash data if it exists
+		res.render('signup', { message: req.flash('signupMessage') });
+	});
+
+	// process the signup form
+	app.post('/signup', passport.authenticate('local-signup', {
+		successRedirect : '/account-setup', // redirect to the secure profile section
+		failureRedirect : '/signup', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
+	}));
+
+// =====================================
+// PROFILE SECTION =========================
+// =====================================
+// we will want this protected so you have to be logged in to visit
+// we will use route middleware to verify this (the isLoggedIn function)
+
+	app.get('/profile', isLoggedIn, function(req, res) {
+		res.render('profile', { user: req.user })// get the user out of session and pass to template
+		});
+
+// =====================================
+// LOGOUT ==============================
+// =====================================
+
+	app.get('/logout', function(req, res) {
+		req.logout();
+		res.redirect('/');
+	});
+};
+
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+
+	// if user is authenticated in the session, carry on
+	if (req.isAuthenticated())
+		return next();
+	// if they aren't redirect them to the home page
+	res.redirect('/');
+}
+
+
+// if (user) {
+	
+//   } else {
+// 	$(".myprofile").hide();
+// 	$(".logout").hide();
+// 	$(".login").show();
+// 	$(".signup").show();
+// };
+
+// $(".myprofile").show();
+// 		$(".logout").show();
+// 		$(".login").hide();
+// 		$(".signup").hide();
 
 app.get("/discover", function(req, res) {
   // db.Example.findAll({}).then(function(dbExamples) {
@@ -95,3 +197,4 @@ app.get("/check-in", function(req, res) {
     res.render("404");
   });
 };
+
