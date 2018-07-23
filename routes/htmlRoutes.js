@@ -53,7 +53,15 @@ app.get("/live", function(req, res) {
   // });
 })
 
-
+app.get("/check-in", function(req, res) {
+  // db.Example.findAll({}).then(function(dbExamples) {
+    res.render("event-checkin");
+    // , {
+      // msg: "Welcome!",
+      // examples: dbExamples
+    // });
+  // });
+})
 
   // // Load example page and pass in an example by id
   // app.get("/profile/:id", function(req, res) {
