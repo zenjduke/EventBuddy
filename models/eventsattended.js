@@ -5,9 +5,13 @@ module.exports = function(sequelize, Sequelize) {
         primaryKey: true,
         type: Sequelize.INTEGER
     },
-    eventsattended: {
-        type: Sequelize.INTEGER
+    eventshistory: {
+        type: Sequelize.INTEGER,
     },
+    eventsattended: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: "false"
+    }
     });
     userEvents.sync();
     return userEvents;
