@@ -1,0 +1,167 @@
+<!-- Account Set Up -->
+<div class="w3-display-container w3-content" style="max-width:1500px;">
+  <img class="w3-image background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="height: 100%;">
+  <div class="w3-main" style="margin-left:250px;margin-right:40px">
+    <div class="w3-padding">
+      <div class="w3-container" id="account-setup" style="max-width: 600px;">
+        <form id="msform">
+          <h3>Welcome {{user.username}}!</h3>
+          <h2>Set Up Your Account</h2>
+          <!-- progressbar -->
+          <ul id="progressbar">
+            <li class="active">Account Setup</li>
+            <li>Social Profiles</li>
+            <li>Personal Details</li>
+          </ul>
+          <!-- fieldsets -->
+          <fieldset>
+            <h2 class="fs-title">Personal Details</h2>
+            <h3 class="fs-subtitle">We will never share your information.</h3>
+            <input type="text" name="fname" id="fname" placeholder="First Name" />
+            <input type="text" name="lname" id="lname" placeholder="Last Name" />
+            <input type="text" name="phone" id="phone" placeholder="Phone" />
+            <input type="text" name="email" id="email" placeholder="Phone" />
+            <input type="text" name="profilepic" id="profilepic" placeholder="Add A Link To Your Profile Picture">
+            <input type="button" name="previous" class="previous action-button" value="Previous" />
+            <input type="button" name="next" class="next action-button" value="Next" />
+          </fieldset>
+          <fieldset>
+            <h2 class="fs-title">Social Profiles</h2>
+            <h3 class="fs-subtitle">Your presence on the social network</h3>
+            <input type="text" name="twitter" id="twitter" placeholder="Twitter" />
+            <input type="text" name="facebook" id="facebook" placeholder="Facebook" />
+            <input type="text" name="gplus" id="gplus" placeholder="Google Plus" />
+            <input type="button" name="previous" class="previous action-button" value="Previous" />
+            <input type="button" name="next" class="next action-button" value="Next" />
+          </fieldset>
+          <fieldset id="survey">
+            <h2 class="fs-title">Events</h2>
+            <h3 class="fs-subtitle">Answer a few questions to help us match you with awesome events.</h3>
+            <div class="form-group w3-select">
+              <h4>What is your ideal venue size?</h4>
+              <label for="q1">Select list:</label>
+              <select name="venue" id="venue">
+                <option value="1-50">1-50 people</option>
+                <option value="50-100">50-100 people</option>
+                <option value="100-200">100-200 people</option>
+                <option value="200-500">200-500 people</option>
+                <option value="500+">500 people</option>
+              </select>
+            </div>
+            <hr>
+            <div class="form-group">
+              <h4>How many people are in your group?</h4>
+              <label for="groupsize">Select list:</label>
+              <select class="form-control w3-select" id="groupsize">
+                <option value="Just me!">Just me!</option>
+                <option value="2-3">2-3</option>
+                <option value="4-6">4-6</option>
+                <option value="6-15">6-15</option>
+                <option value="15+">15+</option>
+              </select>
+            </div>
+            <hr>
+            <div class="form-group">
+              <h4>What type of events do you like to attend?</h4>
+              <label for="eventtype">Select list:</label>
+              <select class="form-control w3-select" id="eventtype">
+                <option value="concerts">Concerts</option>
+                <option value="conferences">Conferences</option>
+                <option value="theater">Theater</option>
+                <option value="cinema">Cinema</option>
+                <option value="food">Food and Drink</option>
+              </select>
+            </div>
+            <input type="button" name="previous" class="previous action-button" value="Previous" />
+            <input type="submit" name="submit" class="setup-btn submit action-button" data-id="{{user.id}}" value="Submit" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- End page content -->
+
+        <script>
+
+          // ---- Multipage Complete Profile Form
+          var current_fs, next_fs, previous_fs; //fieldsets
+          var left, opacity, scale; //fieldset properties which we will animate
+          var animating; //flag to prevent quick multi-click glitches
+
+          $(".next").click(function () {
+            if (animating) return false;
+            animating = true;
+
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({ opacity: 0 }, {
+              step: function (now, mx) {
+                //as the opacity of current_fs reduces to 0 - stored in "now"
+                //1. scale current_fs down to 80%
+                scale = 1 - (1 - now) * 0.2;
+                //2. bring next_fs from the right(50%)
+                left = (now * 50) + "%";
+                //3. increase opacity of next_fs to 1 as it moves in
+                opacity = 1 - now;
+                current_fs.css({
+                  'transform': 'scale(' + scale + ')',
+                  'position': 'absolute'
+                });
+                next_fs.css({ 'left': left, 'opacity': opacity });
+              },
+              duration: 800,
+              complete: function () {
+                current_fs.hide();
+                animating = false;
+              },
+              //this comes from the custom easing plugin
+              easing: 'easeInOutBack'
+            });
+          });
+
+          $(".previous").click(function () {
+            if (animating) return false;
+            animating = true;
+
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+
+            //de-activate current step on progressbar
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({ opacity: 0 }, {
+              step: function (now, mx) {
+                //as the opacity of current_fs reduces to 0 - stored in "now"
+                //1. scale previous_fs from 80% to 100%
+                scale = 0.8 + (1 - now) * 0.2;
+                //2. take current_fs to the right(50%) - from 0%
+                left = ((1 - now) * 50) + "%";
+                //3. increase opacity of previous_fs to 1 as it moves in
+                opacity = 1 - now;
+                current_fs.css({ 'left': left });
+                previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
+              },
+              duration: 800,
+              complete: function () {
+                current_fs.hide();
+                animating = false;
+              },
+              //this comes from the custom easing plugin
+              easing: 'easeInOutBack'
+            });
+          });
+
+
+        </script>
