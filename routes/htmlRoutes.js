@@ -43,6 +43,16 @@ app.get("/events", function(req, res) {
   // });
 })
 
+app.get("/live", function(req, res) {
+  // db.Example.findAll({}).then(function(dbExamples) {
+    res.render("events-now");
+    // , {
+      // msg: "Welcome!",
+      // examples: dbExamples
+    // });
+  // });
+})
+
 
 
   // // Load example page and pass in an example by id
