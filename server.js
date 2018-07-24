@@ -56,7 +56,7 @@ require("./routes/htmlRoutes.js")(app, passport);
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
   // Log (server-side) when our server has started
-  console.log("Server listening on: http://localhost:" + PORT);
+  console.log("The magic happens on: 🌎 http://localhost:" + PORT);
 });
 
 

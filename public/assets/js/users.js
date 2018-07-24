@@ -44,7 +44,7 @@ $(function() {
       data: info
     }).then(
       console.log("Account created."),
-      location.href = "profile"
+      location.href = "profile",
     );
   };
      

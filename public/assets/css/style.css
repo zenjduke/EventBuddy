@@ -40,8 +40,8 @@ body {font-size:16px;}
   justify-content: space-evenly;
 }
 
-.login, .profile-dropdown {
-  z-index: 5;
+.myprofile, #login {
+  z-index: 6;
   color: white;
 }
 
@@ -64,6 +64,11 @@ body {font-size:16px;}
 .welcome {
   font-family: 'Permanent Marker', cursive;
   color: white;
+}
+
+#mini-logo {
+  padding-left: 20px;
+  font-size: 28px;
 }
 
 #profilepic-div {
