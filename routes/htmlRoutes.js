@@ -178,7 +178,6 @@ module.exports = function(app, passport) {
 		res.render("404");
 	});
 		
->>>>>>> master
 };
 
 // route middleware to make sure
@@ -261,7 +260,7 @@ function isLoggedIn(req, res, next) {
 //   });
 // };
 
-};
+// };
 
   // // Load example page and pass in an example by id
   // app.get("/profile/:id", function(req, res) {
