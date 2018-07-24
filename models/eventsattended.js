@@ -6,11 +6,11 @@ module.exports = function(sequelize, Sequelize) {
         type: Sequelize.INTEGER
     },
     eventshistory: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
     },
     eventsattended: {
       type: Sequelize.BOOLEAN,
-    //   defaultValue: "false"
+      // defaultValue: "false"
     }
     });
     userEvents.sync();
