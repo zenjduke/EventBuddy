@@ -2,27 +2,26 @@ var db = require("../models");
 
 module.exports = function(app, passport) {
 
-  // =====================================
-	// HOME PAGE (with login links) ========
-	// =====================================
-    app.get("/", function(req, res) {
-    // db.Example.findAll({}).then(function(dbExamples) {
-			res.render("index", { user: req.user});
-			      // , {
-        // msg: "Welcome!",
-        // examples: dbExamples
-      // });
-    // });
-    })
+// =====================================
+// HOME PAGE (with login links) ========
+// =====================================
+	app.get("/", function(req, res) {
+	// db.Example.findAll({}).then(function(dbExamples) {
+		res.render("index", { user: req.user});
+					// , {
+			// msg: "Welcome!",
+			// examples: dbExamples
+		// });
+	// });
+	})
 
     app.get("/signup", function(req, res) {
       res.render("signup");
 	})
 
-
-    app.get("/discover", function(req, res) {
+	app.get("/discover", function(req, res) {
 		res.render("discover", { user: req.user});
-		})
+	})
 
 	app.get("/account-setup", function(req, res) {
 			res.render("account-setup", { user: req.user});
@@ -59,9 +58,13 @@ module.exports = function(app, passport) {
 // show the login form
 
 	app.get('/login', function(req, res) {
-
+		if (req.user) {
+			res.render('login', { isUserLoggedIn: true});
+		}
+		else {
+			res.render('login', { isUserLoggedIn: false, message: req.flash('loginMessage')[0]});
+		}
 		// render the page and pass in any flash data if it exists
-		res.render('login', { message: req.flash('loginMessage') });
 	});
 
 	// process the login form
@@ -86,9 +89,21 @@ module.exports = function(app, passport) {
 // =====================================
 // show the signup form
 
+	// app.get('/signup', function(req, res) {
+	// 	console.log(req.flash('signupMessage')[0]);
+	// 	// render the page and pass in any flash data if it exists
+	// 	res.render('signup', { message: req.flash('signupMessage')[0]});
+	// });
+
 	app.get('/signup', function(req, res) {
+		if (req.user) {
+			console.log(req.user);
+			res.render('signup', { isUserLoggedIn: true});
+		}
+		else {
+			res.render('signup', { isUserLoggedIn: false, message: req.flash('signupMessage')[0]});
+		}	
 		// render the page and pass in any flash data if it exists
-		res.render('signup', { message: req.flash('signupMessage') });
 	});
 
 	// process the signup form
@@ -98,6 +113,17 @@ module.exports = function(app, passport) {
 		failureFlash : true // allow flash messages
 	}));
 
+
+	app.get('/login', function(req, res) {
+		if (req.user) {
+			res.render('login', { isUserLoggedIn: true});
+		}
+		else {
+			res.render('login', { isUserLoggedIn: false, message: req.flash('loginMessage')[0]});
+		}
+		// render the page and pass in any flash data if it exists
+	});
+
 // =====================================
 // PROFILE SECTION =========================
 // =====================================
@@ -106,7 +132,7 @@ module.exports = function(app, passport) {
 
 	app.get('/profile', isLoggedIn, function(req, res) {
 		res.render('profile', { user: req.user })// get the user out of session and pass to template
-		});
+	});
 
 // =====================================
 // LOGOUT ==============================
@@ -116,17 +142,43 @@ module.exports = function(app, passport) {
 		req.logout();
 		res.redirect('/');
 	});
+	
+	app.get("/events", function(req, res) {
+		// db.Example.findAll({}).then(function(dbExamples) {
+			res.render("event-list");
+			// , {
+				// msg: "Welcome!",
+				// examples: dbExamples
+			// });
+		// });
+	})
+	
+	app.get("/live", function(req, res) {
+		// db.Example.findAll({}).then(function(dbExamples) {
+			res.render("events-now");
+			// , {
+				// msg: "Welcome!",
+				// examples: dbExamples
+			// });
+		// });
+	})
+	
+	app.get("/check-in", function(req, res) {
+		// db.Example.findAll({}).then(function(dbExamples) {
+			res.render("event-checkin");
+			// , {
+				// msg: "Welcome!",
+				// examples: dbExamples
+			// });
+		// });
+	})
 
-
-app.get("/check-in", function(req, res) {
-  // db.Example.findAll({}).then(function(dbExamples) {
-    res.render("event-checkin");
-    // , {
-      // msg: "Welcome!",
-      // examples: dbExamples
-    // });
-  // });
-});
+	// Render 404 page for any unmatched routes
+	app.get("*", function(req, res) {
+		res.render("404");
+	});
+		
+>>>>>>> master
 };
 
 // route middleware to make sure
@@ -208,4 +260,16 @@ function isLoggedIn(req, res, next) {
 //     res.render("404");
 //   });
 // };
+
+};
+
+  // // Load example page and pass in an example by id
+  // app.get("/profile/:id", function(req, res) {
+  //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+  //     res.render("example", {
+  //       example: dbExample
+  //     });
+  //   });
+  // });
+
 

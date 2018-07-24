@@ -10,7 +10,7 @@ module.exports = function(sequelize, Sequelize) {
     },
     eventsattended: {
       type: Sequelize.BOOLEAN,
-      defaultValue: "false"
+    //   defaultValue: "false"
     }
     });
     userEvents.sync();
