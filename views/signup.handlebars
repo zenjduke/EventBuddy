@@ -5,14 +5,15 @@
 		<div class="w3-padding">
 			<div id="signup-form" style="width:75%">
 				<h2> Sign Up</h2>
-				<img src="../assets/img/avatars/avatar6.png" alt="Avatar" style="width:25%" class="w3-circle w3-margin-top">
-				
+
 				<!-- show any messages that come back with authentication -->
-			{{#if message}}
-       			<div class="w3-display-container w3-red w3-card-4 alert">
-           			<span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright close-alert">&times;</span>{{message}}
-        		</div>
-        	{{/if}}
+				{{#if message}}
+					<div class="w3-display-container w3-red w3-card-4 alert">
+						<span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright close-alert">&times;</span>{{message}}
+					</div>
+				{{/if}}
+					
+				<img src="../assets/img/avatars/avatar6.png" alt="Avatar" style="width:25%" class="w3-circle w3-margin-top">
 				
 				<!-- Registration FORM -->
 				<form class="w3-padding" action="/signup" method="post">

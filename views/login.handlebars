@@ -1,20 +1,4 @@
 <!-- Log In Page -->
-
-{{#if isUserLoggedIn}} 
-   <div class="w3-dropdown-click w3-display-topleft w3-mobile profile-dropdown">
-      <button onclick="myFunction()" class="w3-bar-item w3-button w3-text-white">
-          <i class="fa fa-user-circle-o w3-hover-opacity w3-xxlarge"></i>
-      </button>
-      <div id="menu" class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="profile" class="w3-bar-item w3-button w3-display-topleft w3-mobile">My Profile</a>
-          <button class="w3-bar-item w3-button w3-mobile" onclick="document.getElementById('settings').style.display='block'" class="w3-button">Settings</button>
-          <a href="/logout" class="w3-bar-item w3-button w3-right w3-mobile myprofile">Logout</a>
-      </div>
-    </div>
-{{else}}
-    <a href="/login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white login">Log In</a>      
-{{/if}}
-
 <div class="w3-display-container w3-content discover" style="max-width:1500px;">
   <img class="w3-image background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px" width="1500">
   <div class="w3-main" style="margin-left:250px;margin-right:40px">
@@ -23,7 +7,7 @@
         <h2>
           <span class="fa fa-sign-in"></span> Login</h2>
 
-          <!-- show any messages that come back with authentication -->
+        <!-- show any messages that come back with authentication -->
         {{#if message}}
         <div class="w3-display-container w3-red w3-card-4 alert">
            <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright close-alert">&times;</span>{{message}}

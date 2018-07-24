@@ -63,9 +63,10 @@ module.exports = function(sequelize, Sequelize) {
         type: Sequelize.STRING,
     },
 
-    eventtype: {
-        type: Sequelize.STRING,
-    },
+    // sports: {
+    //     type: Sequelize.BOOLEAN,
+    //     defaultValue: false,
+    // },
 
     last_login: {
         type: Sequelize.DATE
