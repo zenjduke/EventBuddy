@@ -11,12 +11,20 @@ h2, h3, #logo  {
 
 body {font-size:16px;}
 
+.alert {
+  padding: 10px 45px 10px 45px;
+}
+
 .background-image{
   position: absolute;
     left: 0px;
     top: 0px;
     z-index: -1;
   background-size:100%;
+}
+
+.close-alert {
+  padding: 5;
 }
 
 .happening-now {
@@ -30,6 +38,11 @@ body {font-size:16px;}
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+
+.login, .profile-dropdown {
+  z-index: 5;
+  color: white;
 }
 
 .logout, .update {
@@ -94,7 +107,6 @@ body {font-size:16px;}
  }
 
  .stream-img {
-   align-self: center;
    height: 90%;
    max-height: 200px;
  }

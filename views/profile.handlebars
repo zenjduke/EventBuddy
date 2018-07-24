@@ -1,9 +1,25 @@
+{{#if isUserLoggedIn}} 
+   <div class="w3-dropdown-click w3-display-topleft w3-mobile">
+      <button onclick="myFunction()" class="w3-bar-item w3-button w3-text-white">
+          <i class="fa fa-user-circle-o w3-hover-opacity w3-xxlarge"></i>
+      </button>
+      <div id="menu" class="w3-dropdown-content w3-bar-block w3-border">
+          <a href="profile" class="w3-bar-item w3-button w3-display-topleft w3-mobile myprofile">My Profile</a>
+          <button class="w3-bar-item w3-button w3-mobile" onclick="document.getElementById('settings').style.display='block'" class="w3-button">Settings</button>
+          <a href="/logout" class="w3-bar-item w3-button w3-right w3-mobile myprofile">Logout</a>
+      </div>
+    </div>
+{{else}}
+    <a href="/login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Log In</a>      
+{{/if}}
+
 <!-- Content -->
 <div class="w3-display-container w3-content" style="max-width:1500px;">
   <img class="background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px" width="1500">
   <div class="w3-main" style="margin-left:250px;margin-right:40px">
     <div class="w3-bar w3-text-white profile">
-      <h2>Hi {{user.fname}}!</h2><button onclick="document.getElementById('settings').style.display='block'" class="w3-btn w3-border w3-red">Account Details</button>    
+      <h2>Hi {{user.fname}}!</h2>
+      <button onclick="document.getElementById('settings').style.display='block'" class="w3-btn w3-border w3-red">Account Details</button>    
       <img class="w3-image w3-display-topright" id="profilepic-div" src="{{user.profilepic}}" />
     </div>
     <hr width="60%">
