@@ -1,10 +1,10 @@
+
 <!-- Content -->
 <div class="w3-display-container w3-content" style="max-width:1500px;">
   <img class="background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px" width="1500">
-  <div class="w3-main" style="margin-left:250px;margin-right:40px">
-    <div class="w3-bar w3-text-white profile">
-      <h2>Profile</h2>
-      <button onclick="document.getElementById('settings').style.display='block'" class="w3-btn w3-border w3-red">Account Details</button>    
+  <div class="w3-main" style="margin-left:260px;margin-right:40px">
+    <div class="w3-container w3-text-white profile">
+      <h1 class="w3-text-white" id="logo">Profile</h1>   
       <img class="w3-image w3-display-topright" id="profilepic-div" src="{{user.profilepic}}" />
     </div>
     <hr width="60%">
@@ -14,12 +14,14 @@
       <h2>Friends</h2>
       <div>
         <img class="friend" src="/assets/img/avatars/avatar1.png">
-        <img class="friend"  src="/assets/img/avatars/avatar1.png">
-        <img class="friend"  src="/assets/img/avatars/avatar1.png">
+        <img class="friend"  src="/assets/img/avatars/avatar5.png">
+        <img class="friend"  src="/assets/img/avatars/avatar9.png">
       </div>
       <button class="w3-btn w3-border w3-red" type="submit">Connect With New Friends</button>
     </div>
     <hr>
+
+    <div id='calendar'></div>
 
     <!--Past Events-->
     <div class="w3-container w3-text-white" id="past-events">
@@ -63,6 +65,7 @@
         </div>
       </div>
     </div>
+    
 
       <!-- Profile Settings Modal -->
 
@@ -95,7 +98,7 @@
 
           <footer class="w3-container w3-red">
             <a href="/logout" class="w3-btn w3-red w3-border w3-right logout">Logout</a>
-            <button class="w3-btn w3-border w3-red w3-left update">Update Information</button>
+            <button href="/account-settings" class="w3-btn w3-border w3-red w3-left update">Update Information</button>
           </footer>
 
         </div>
