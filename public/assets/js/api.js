@@ -58,11 +58,17 @@ $(function() {
             console.log(eventData);
 
             for ( var i = 0; i < 15; i++ ) {
+
                 image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
+
                 title = $("<span>").text(eventData[i].title).addClass("w3-display-middle w3-text-red w3-padding").attr("id", "event-title");
-                $(".display"+i).append(image).append(title);
+
+                attendBtn = $("<button>").text("Attend").attr("id",eventData[i].id).addClass("w3-btn w3-border attend-btn w3-display-bottom");
+
+                $(".display"+i).append(image).append(title).append(attendBtn);
             }
         })     
     });
 
+  
 });

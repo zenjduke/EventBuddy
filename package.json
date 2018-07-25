@@ -21,9 +21,18 @@
   "homepage": "https://github.com/Faze18/ProjectX#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
     "chai": "^4.1.2",
+<<<<<<< HEAD
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
+=======
+    "choices.js": "^3.0.4",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "css-loader": "^1.0.0",
+    "ejs": "^2.6.1",
+>>>>>>> master
     "eslint": "^5.1.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
@@ -32,7 +41,10 @@
     "file-loader": "^1.1.11",
     "handlebars-loader": "^1.7.0",
     "mocha": "^5.2.0",
+<<<<<<< HEAD
     "moment": "^2.22.2",
+=======
+>>>>>>> master
     "morgan": "^1.9.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.5.3",

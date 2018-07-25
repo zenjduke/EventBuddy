@@ -34,7 +34,16 @@ $(function() {
 
     createAccount(newAccount);
   })
-});
+  });
+
+  $(".attend").on("click", function(e) {
+
+  e.preventDefault();
+
+  var id = $(this).data("id");
+  console.log(id);
+  
+  });
   
       // This function updates a todo in our database
   function createAccount(info) {

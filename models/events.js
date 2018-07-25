@@ -1,11 +1,11 @@
 module.exports = function(sequelize, Sequelize) {
 
-  var UserEvents = sequelize.define("userEvents", {
-    userID: {
+  var Event = sequelize.define("Event", {
+    eventID: {
         primaryKey: true,
         type: Sequelize.INTEGER
     },
-    eventsHistory: {
+    toAttend: {
         type: Sequelize.INTEGER,
     },
     attended: {
@@ -14,17 +14,16 @@ module.exports = function(sequelize, Sequelize) {
     }
     });
 
-    UserEvents.associate = function(models) {
+    Event.associate = function(models) {
         // We're saying that a Post should belong to an Author
         // A Post can't be created without an Author due to the foreign key constraint
-        UserEvents.belongsTo(models.User, {
+        Event.belongsTo(models.User, {
           foreignKey: {
             allowNull: false
           }
         });
-    };
+      };
 
-UserEvents.sync();
-return UserEvents;
-
+Event.sync();
+return Event;
 };
