@@ -1,4 +1,5 @@
 var db = require("../models");
+var eventfulapi = require("../models/eventfulapi");
 
 module.exports = function(app, passport) {
   // =====================================
@@ -19,18 +20,20 @@ module.exports = function(app, passport) {
   });
   //assets/img/concert1.jpg
 
+  //controller function for discover page
   app.get("/discover", function(req, res) {
-    const a = {
-      user: req.user,
-      events: [
-        {
-          title: "foo",
-          image: { medium: { url: "assets/img/concert1.jpg" } }
-        }
-      ]
-    };
-    console.log(a);
-    res.render("discover", a);
+    console.log(eventfulapi[0]);
+    //TODO eventfulapi.getEvents (process.env.api_key, "Austin", ["music"])
+    eventfulapi
+      .getEvents(process.env.api_key, "Austin", ["music"])
+      .then(events => {
+        const a = {
+          user: req.user,
+          events: events
+        };
+        console.log(a);
+        res.render("discover", a);
+      });
   });
 
   app.get("/account-setup", function(req, res) {
