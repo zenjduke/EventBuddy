@@ -11,6 +11,10 @@ h3, #logo  {
 
 body {font-size:16px;}
 
+tr {
+  margin: 10px;
+}
+
 td {
   width: 15em; 
   overflow: hidden; /* make sure it hides the content that overflows */

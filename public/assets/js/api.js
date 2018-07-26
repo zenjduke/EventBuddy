@@ -57,6 +57,25 @@ EVDB.API.call( "/events/search", oArgs, function ( oData ) {
         }
 
 
+                attendBtn = $("<button>").addClass("w3-btn w3-text-red").text("Attend").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("city",eventData[i].city_name).attr("time",eventData[i].time).addClass("attend w3-btn w3-border");
+                attendCol.append(attendBtn);
+
+                tr.append(titleCol).append(venueCol).append(attendCol);
+                $(".results-table").append(tr);
+            }
+        })     
+    });
+  
+});
+
+// tr=$("<tr>");
+// titleCol=$("<td>").text(eventData[i].title).addClass("w3-display-top w3-text-red w3-padding").attr("id", "event-title");
+// venueCol=$("<td>").text(eventData[i].venue);
+// cityCol=$("<td>").text(eventData[i].city_name);
+// timeCol=$("<td>").text(eventData[i].time);
+// attendCol=$("<td>");
+
+
         eventData.push( eventObj );
         console.log( i + oData.events.event[i].title );
     }
