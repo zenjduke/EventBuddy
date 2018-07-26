@@ -128,11 +128,37 @@ module.exports = function(app, passport) {
 				res.render('profile', { isUserLoggedIn: false, user: req.user});
 			}
 		})
+<<<<<<< HEAD
 
+=======
+=======
+>>>>>>> 32e73251c58dd26ab21ab2ed469be48c6ba0407f
 	// =====================================
 	// Events/Live/Check-In/Discover Pages =
 	// =====================================
 	
+<<<<<<< HEAD
+=======
+  app.get("/discover", function(req, res) {
+			if (req.user) {
+				console.log(req.user);
+				res.render('discover', {isUserLoggedIn: true, user: req.user});
+			}
+			else {
+				console.log(req.user);
+				res.render('discover', {isUserLoggedIn: false, user: req.user});
+			}	})
+  
+	app.get("/events", function(req, res) {
+		// db.Example.findAll({}).then(function(dbExamples) {
+			res.render("event-list");
+			// , {
+				// msg: "Welcome!",
+				// examples: dbExamples
+			// });
+		// });
+	})
+>>>>>>> 32e73251c58dd26ab21ab2ed469be48c6ba0407f
 	
 	app.get("/live", function(req, res) {
 		// db.Example.findAll({}).then(function(dbExamples) {
@@ -152,8 +178,11 @@ module.exports = function(app, passport) {
 			res.render('event-checkin', { isUserLoggedIn: false, user: req.user});
 		}	})
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 32e73251c58dd26ab21ab2ed469be48c6ba0407f
 		// =====================================
 		// LOGOUT ==============================
 		// =====================================
