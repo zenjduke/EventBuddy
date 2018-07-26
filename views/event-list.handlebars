@@ -1,8 +1,7 @@
 <!-- Navigation Bar -->
-       <script type="text/javascript" src="https://api.eventful.com/js/api"></script>
-    <script src="/../assets/js/api.js" type="text/javascript"></script>
-
-{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://api.eventful.com/js/api"></script>
+<script src="/../assets/js/api.js" type="text/javascript"></script> {{!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
 
@@ -159,30 +158,25 @@
     <span class="close">&times;</span>
 
     <h2 style="color:black; margin-left: 25px; margin-right:25px;" id="modal-title">Some text in the Modal..</h2>
-    <img id="modal-image" src="assets/img/concert1.jpg" style="width: 300px; margin-left:10px;float:left;">
-    {{!-- <h3 id="modalTime" style="float:left;color:black;">Time: </h3>
+    <img id="modal-image" src="assets/img/concert1.jpg" style="width: 300px; margin-left:10px;float:left;"> {{!--
+    <h3 id="modalTime" style="float:left;color:black;">Time: </h3>
     <br>
-    <h3 id="modalVenue"style=" color:black;">Venue: </h3> --}}
-                  <div class="tab-content">
-                    <div  class="tab-pane active"  style="color: black;font-size: 24px; margin: 0 0 0 40px; line-height: 2.2;">
-                        
-                            City: <span id ="modalLocation"></span><br>
-                            Time: <span id="modalTime"></span><br>
-                            Venue: <span id = "modalVenue"></span><br>
-                            URL: <a src="" id="modalVenueUrl">Check out the Venue</span>
-                        
-    <div style="position: absolute;bottom:5px;right:5px;">
-        <button style="margin:5px:" type="button" class="btn btn-primary">Interested</button>
-        <button type="button" class="btn btn-primary">Im going!</button>
-    </div>
+    <h3 id="modalVenue" style=" color:black;">Venue: </h3> --}}
+    <div class="tab-content">
+        <div class="tab-pane active" style="color: black;font-size: 24px; margin: 0 0 0 40px; line-height: 2.2;">
 
-</div>
+            City:
+            <span id="modalLocation"></span>
+            <br> Time:
+            <span id="modalTime"></span>
+            <br> Venue:
+            <span id="modalVenue"></span>
+            <br> URL:
+            <a src="" id="modalVenueUrl">Check out the Venue</span>
 
+                <div style="position: absolute;bottom:5px;right:5px;">
+                    <button style="margin:5px:" type="button" class="btn btn-primary">Interested</button>
+                    <button type="button" class="btn btn-primary">Im going!</button>
+                </div>
 
-
-<script>
-
-apiCall();
-
-         
-</script>
+        </div>

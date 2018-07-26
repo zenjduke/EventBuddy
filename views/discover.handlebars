@@ -10,17 +10,11 @@
             <div class="w3-hide w3-center" id="loading">
                 <img src="/assets/img/loading.gif" style="position:fixed" width="100px">
             </div>
-            {{#if userLoggedIn}}
             <button class="w3-btn w3-text-white w3-border get-events w3-right">Search Events</button>
-            {{else}}
-            <div class="w3-container w3-text-white">
-                <h2>Please log in to search events!</h2>
-                <a href="/login" onclick="w3_close()" class="w3-btn w3-border w3-hover-white" id="login">Log In</a>      
-            </div>
-            {{/if}}
+
             <!-- Photo grid (modal) -->
             <div class="w3-row w3-row-padding">
-                <div class="w3-table w3-card results-table w3-hoverable w3-white w3-padding">  
+                <div class="w3-table w3-card results-table w3-hoverable w3-white w3-padding">
                 </div>
             </div>
 
@@ -44,4 +38,3 @@
             captionText.innerHTML = element.alt;
         }
     </script>
-

@@ -1,5 +1,5 @@
 {
-  "name": "ProjectX",
+  "name": "projectx",
   "version": "1.0.0",
   "description": "The 2nd project",
   "main": "index.js",
@@ -44,5 +44,6 @@
     "sequelize-cli": "^4.0.0",
     "sqlite3": "^4.0.2",
     "uniq": "^1.0.1"
-  }
+  },
+  "devDependencies": {}
 }
