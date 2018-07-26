@@ -1,5 +1,5 @@
 var db = require("../models");
-
+var apiCall = require("../public/assets/js/events.js");
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
