@@ -26,13 +26,12 @@ var oArgs = {
 
 };
 
+// API CALL as soon as page loads to display scrolling events nearby.
 EVDB.API.call( "/events/search", oArgs, function ( oData ) {
-    data = JSON.stringify( oData );
-    console.log( oData );
-    // document.getElementById("results").append(picture);
-    console.log( "test:" );
-    // console.log(oData.events.event[0]);
-    for ( var i = 0; i < 30; i++ ) {
+    data = JSON.stringify(oData);
+    console.log(oData);
+    console.log( "Test:" );
+    for (var i = 0; i < 30; i++) {
         var eventObj = [];
         if ( oData.events.event[i].title != null ) {
             eventObj.title = oData.events.event[i].title;
@@ -48,7 +47,7 @@ EVDB.API.call( "/events/search", oArgs, function ( oData ) {
 
         } if ( oData.events.event[i].start_time != null ) {
             var dateTime = new Date(oData.events.event[i].start_time );
-            dateTime = moment( dateTime ).format( "YYYY MM Do hh:mm:ss a" );
+            dateTime = moment(dateTime).format( "MMMM Do YYYY h:mm a" );
             eventObj.time = dateTime;
 
         } if ( oData.events.event[i].url != null ) {
@@ -63,32 +62,38 @@ EVDB.API.call( "/events/search", oArgs, function ( oData ) {
         } if ( oData.events.event[i].id != null ) {
             eventObj.id = oData.events.event[i].id;
         }
-
-        eventData.push( eventObj );
-        console.log( i + oData.events.event[i].title );
+        eventData.push(eventObj);
     }
-    console.log( eventData );
+    console.log(eventData);
+    document.getElementById("loading").classList.add("w3-hide");
 
 
-    for ( var i = 0; i < 16; i++ ) {
-        var image = "#image" + i;
-        $( image ).attr( "src", eventData[i].image );
+    for ( var i = 0; i < 30; i++ ) {
 
+        tr=$("<tr>").addClass("w3-card w3-padding w3-white").attr("id", "scroll-row");
+        titleCol=$("<td>").text(eventData[i].title).addClass("w3-text-red w3-padding").attr("id", "event-title");
+        venueCol=$("<td>").text(eventData[i].venue);
+        // cityCol=$("<td>").text(eventData[i].city_name);
+        timeCol=$("<td>").text(eventData[i].time);
+        attendCol=$("<td>");
+        image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
+       
+        imgCol=$("<td>").append(image);
 
+        attendBtn = $("<button>").text("Get Info").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venue",eventData[i].venue).attr("time",eventData[i].time).addClass("w3-btn w3-text-white w3-border w3-bottom").attr("user-id", "1").attr("id","learn-more");
+
+        attendCol.append(attendBtn);
+
+        tr.append(titleCol).append(venueCol).append(timeCol).append(attendCol);
+        $("#table_scroll").append(tr);
     }
-    for ( var i = 0; i < 16; i++ ) {
-        var event = "#event" + i;
-        $( event ).html( eventData[i].title );
-        $( event ).attr( "style", "color: gray;" );
-        $( event ).attr( "style", "text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0px -1px 0 #000,0px 1px 0 #000;" );
+});
 
-    }
-} );
+$(document).ready( function () {
+    console.log("Page ready!");
+    document.getElementById("loading").classList.remove("w3-hide");
 
-$( document ).ready( function () {
-    console.log( "ready!" );
-
-    $( ".w3-margin-bottom" ).click( function () {
+    $(".event-info").click( function () {
         var idNum = parseInt( this.id );
         console.log( typeof idNum );
 

@@ -34,7 +34,6 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-
 // required for passport
 app.use(session({
 	secret: 'vidyapathaisalwaysrunning',
@@ -45,13 +44,8 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-
-
 // Import routes and give the server access to them.
-
-// require("./routes/apiRoutes.js")(app, passport);
-require("./routes/htmlRoutes.js")(app, passport);
-
+require("./routes/routes.js")(app, passport);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
