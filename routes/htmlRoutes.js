@@ -129,6 +129,31 @@ module.exports = function(app, passport) {
 			}
 		})
 
+	// =====================================
+	// Events/Live/Check-In/Discover Pages =
+	// =====================================
+	
+	
+	app.get("/live", function(req, res) {
+		// db.Example.findAll({}).then(function(dbExamples) {
+			res.render("events-now");
+			// , {
+				// msg: "Welcome!",
+				// examples: dbExamples
+			// });
+		// });
+	})
+	
+	app.get("/check-in", function(req, res) {
+		if (req.user) {
+			res.render('event-checkin', { isUserLoggedIn: true, user: req.user});
+		}
+		else {
+			res.render('event-checkin', { isUserLoggedIn: false, user: req.user});
+		}	})
+
+
+
 		// =====================================
 		// LOGOUT ==============================
 		// =====================================
