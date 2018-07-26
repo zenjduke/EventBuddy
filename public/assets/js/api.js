@@ -16,7 +16,10 @@ $(function() {
 
         e.preventDefault();
 
+        document.getElementById("loading").classList.remove("w3-hide");
+
         EVDB.API.call( "/events/search", oArgs, function (oData) {
+            document.getElementById("loading").classList.add("w3-hide");
             data = JSON.stringify(oData);
             console.log( oData );
             // document.getElementById("results").append(picture);
@@ -59,16 +62,42 @@ $(function() {
 
             for ( var i = 0; i < 15; i++ ) {
 
+                tr=$("<tr>").addClass("w3-card");
+                titleCol=$("<td>").text(eventData[i].title).addClass("w3-display-top w3-text-red w3-padding").attr("id", "event-title");
+                venueCol=$("<td>").text(eventData[i].venue);
+                cityCol=$("<td>").text(eventData[i].city_name);
+                timeCol=$("<td>").text(eventData[i].time);
+                attendCol=$("<td>");
+
+
                 image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
+                imgCol=$("<td>").append(image);
 
-                title = $("<span>").text(eventData[i].title).addClass("w3-display-middle w3-text-red w3-padding").attr("id", "event-title");
+                attendBtn = $("<button>").text("Attend").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venue",eventData[i].venue).attr("time",eventData[i].time).addClass("attend w3-btn w3-text-white w3-border w3-bottom").attr("user-id", "1");
+                attendCol.append(attendBtn);
 
-                attendBtn = $("<button>").text("Attend").attr("id",eventData[i].id).addClass("w3-btn w3-border attend-btn w3-display-bottom");
-
-                $(".display"+i).append(image).append(title).append(attendBtn);
+                tr.append(titleCol).append(venueCol).append(cityCol).append(timeCol).append(attendCol);
+                $(".results-table").append(tr);
             }
         })     
     });
-
   
 });
+
+// tr=$("<tr>");
+// titleCol=$("<td>").text(eventData[i].title).addClass("w3-display-top w3-text-red w3-padding").attr("id", "event-title");
+// venueCol=$("<td>").text(eventData[i].venue);
+// cityCol=$("<td>").text(eventData[i].city_name);
+// timeCol=$("<td>").text(eventData[i].time);
+// attendCol=$("<td>");
+
+
+// image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
+// imgCol=$("<td>").append(image);
+
+// attendBtn = $("<button>").text("Attend").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venue",eventData[i].venue).attr("time",eventData[i].time).addClass("attend w3-btn w3-text-white w3-border w3-bottom").attr("user-id", "1");
+// attendCol.append(attendBtn);
+
+// tr.append(titleCol).append(venueCol).append(cityCol).append(timeCol).append(attendCol);
+// $(".results-table").append(tr);
+// }

@@ -5,28 +5,15 @@ var express = require("express");
 var session  = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require("body-parser");
-<<<<<<< HEAD
 var morgan = require('morgan');
 var app = express();
-=======
-
-
->>>>>>> master
 var PORT = process.env.PORT || 8080;
 
 var passport = require('passport');
 var flash = require('connect-flash');
 
-<<<<<<< HEAD
 // configuration ===============================================================
 // connect to our database
-=======
-// log every request to the console
-app.use(morgan('dev'));
-
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
->>>>>>> master
 
 require('./config/passport')(passport); // pass passport for configuration
 
