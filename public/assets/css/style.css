@@ -11,6 +11,14 @@ h3, #logo  {
 
 body {font-size:16px;}
 
+td {
+  width: 15em; 
+  overflow: hidden; /* make sure it hides the content that overflows */
+  white-space: nowrap; /* don't break the line */
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
 .alert {
   padding: 10px 45px 10px 45px;
 }
