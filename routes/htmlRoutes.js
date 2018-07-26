@@ -101,16 +101,6 @@ module.exports = function(app, passport) {
 			res.redirect('/');
 		});
 
-		app.get("/discover", function(req, res) {
-			if (req.user) {
-				console.log(req.user);
-				res.render('discover', {isUserLoggedIn: true, user: req.user});
-			}
-			else {
-				console.log(req.user);
-				res.render('discover', {isUserLoggedIn: false, user: req.user});
-			}	})
-
 		// =====================================
 		// PROFILE SECTION =========================
 		// =====================================
@@ -128,6 +118,48 @@ module.exports = function(app, passport) {
 				res.render('profile', { isUserLoggedIn: false, user: req.user});
 			}
 		})
+=======
+	// =====================================
+	// Events/Live/Check-In/Discover Pages =
+	// =====================================
+	
+  app.get("/discover", function(req, res) {
+			if (req.user) {
+				console.log(req.user);
+				res.render('discover', {isUserLoggedIn: true, user: req.user});
+			}
+			else {
+				console.log(req.user);
+				res.render('discover', {isUserLoggedIn: false, user: req.user});
+			}	})
+  
+	app.get("/events", function(req, res) {
+		// db.Example.findAll({}).then(function(dbExamples) {
+			res.render("event-list");
+			// , {
+				// msg: "Welcome!",
+				// examples: dbExamples
+			// });
+		// });
+	})
+	
+	app.get("/live", function(req, res) {
+		// db.Example.findAll({}).then(function(dbExamples) {
+			res.render("events-now");
+			// , {
+				// msg: "Welcome!",
+				// examples: dbExamples
+			// });
+		// });
+	})
+	
+	app.get("/check-in", function(req, res) {
+		if (req.user) {
+			res.render('event-checkin', { isUserLoggedIn: true, user: req.user});
+		}
+		else {
+			res.render('event-checkin', { isUserLoggedIn: false, user: req.user});
+		}	})
 
 		// =====================================
 		// LOGOUT ==============================

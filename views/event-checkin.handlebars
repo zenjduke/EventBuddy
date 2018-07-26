@@ -1,19 +1,23 @@
 <!-- Content -->
 <script src="/../assets/js/capture.js"></script>
-<div class="w3-display-container w3-content discover" style="max-width:1500px;">
+<div class="w3-display-container w3-content discover w3-text-white" style="max-width:1500px;">
 <img class="w3-image background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px" width="1500">
 <div class="w3-main" style="margin-left:250px;margin-right:40px">
     <div class="w3-padding">
         <h1 class="welcome">Hi {{user.fname}}!</h1>
         <div class="w3-container w3-text-white">
             <h3>EVENT SOCIAL STREAM!</h3>
-            <div>
-                <br />
+            <div class="w3-half">
+                <br /><div class="w3-card w3-hover-shadow w3-center">
+                <h3>Event shots!</h3>
                 <canvas id="canvas">
                 </canvas>
+                </div>
+                <div class="w3-card w3-hover-shadow w3-center">
                 <div class="camera">
                     <video id="video">Video stream not available.</video>
                     <p><button id="startbutton">Take photo</button></p>
+                </div>
                 </div>
             </div>
         </div>
