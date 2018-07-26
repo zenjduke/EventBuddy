@@ -215,6 +215,7 @@ td {
     margin-top: 280px;
     margin-bottom: 280px;
     border-collapse: collapse;
+    overflow-y:hidden;
   }
   #table_scroll thead th {
     padding: 10px;
