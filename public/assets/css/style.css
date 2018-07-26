@@ -5,7 +5,7 @@ body,h1,h4,h5 {
   color white;
 }
 
-h2, h3, #logo  {
+h3, #logo  {
   font-family: 'Permanent Marker', cursive;
 }
 
@@ -16,10 +16,8 @@ body {font-size:16px;}
 }
 
 .background-image{
-  position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
+  position: fixed;
+    z-index: -3;
   background-size:100%;
 }
 
@@ -40,6 +38,10 @@ body {font-size:16px;}
   justify-content: space-evenly;
 }
 
+.info {
+  height: 80%;
+}
+
 .myprofile, #login {
   z-index: 6;
   color: white;
@@ -53,9 +55,9 @@ body {font-size:16px;}
   background-image: url(/assets/img/concert4.jpg);
 }
 
-.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:1;cursor:pointer}
 
-.w3-half img:hover{opacity:1}
+.w3-half img:hover{opacity:.8}
 
 .w3-main {
   z-index: 4;
@@ -66,6 +68,19 @@ body {font-size:16px;}
   color: white;
 }
 
+#event-result {
+  margin: 20px;
+}
+
+#event-title {
+  width: 15em; 
+  overflow: hidden; /* make sure it hides the content that overflows */
+  white-space: nowrap; /* don't break the line */
+  text-overflow: ellipsis;
+  display: inline-block;
+  font-family: 'Permanent Marker', cursive;
+}
+
 #mini-logo {
   padding-left: 20px;
   font-size: 28px;
@@ -73,11 +88,11 @@ body {font-size:16px;}
 
 #profilepic-div {
   border-radius: 50%;
-  max-height: 150px;
-  padding: 15px;
+  max-height: 170px;
+  padding: 5px;
   border: #ffffff;
-  border-width: 2px;
-  margin: 30px;
+  border-width: 1px;
+  margin: 20px;
   border-style: groove;
 }
 

@@ -3,47 +3,77 @@
     <img class="w3-image background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px" width="1500">
     <div class="w3-main" style="margin-left:250px;margin-right:40px">
         <div class="w3-padding">
-        <div class="w3-container w3-text-white">
-            <h1 class="w3-text-white" id="logo">Discover Events Happening Near You</h1>
-        </div>
-
-        <div class="w3-row-padding w3-padding-16 w3-text-white w3-large" style="width:100%">
-            <div class="w3-half w3-margin-bottom">
-                <div class="w3-display-container">
-                    <img src="assets/img/concert1.jpg" alt="Cinque Terre" style="width:100%">
-                    <span class="w3-display-bottomleft w3-padding">Blues On The Green</span>
-                </div>
+            <div class="w3-container w3-text-white">
+                <h1 class="w3-text-white" id="logo">Discover Events Happening Near You</h1>
             </div>
-            <div class="w3-half">
-                <div class="w3-row-padding" style="margin:0 -16px">
-                    <div class="w3-half w3-margin-bottom">
-                        <div class="w3-display-container">
-                            <img src="assets/img/concert1.jpg" alt="New York" style="width:100%">
-                            <span class="w3-display-bottomleft w3-padding">Paul Simon</span>
-                        </div>
+            <div class="w3-hide w3-center" id="loading">
+                <img src="/assets/img/loading.gif" style="position:fixed" width="100px">
+            </div>
+            <button class="w3-btn w3-text-white w3-border get-events w3-right">Search Events</button>
+            <!-- Photo grid (modal) -->
+            <div class="w3-row w3-row-padding">
+
+                <div class="w3-table w3-card results-table w3-hoverable w3-white w3-padding">
+                    
+                </div>
+
+
+                {{!-- <div class="w3-third">
+                    <div class="w3-display-container display1">
                     </div>
-                    <div class="w3-half w3-margin-bottom">
-                        <div class="w3-display-container">
-                            <img src="assets/img/concert1.jpg" alt="San Francisco" style="width:100%">
-                            <span class="w3-display-bottomleft w3-padding">ACL</span>
-                        </div>
+                    <div class="w3-display-container display2">
+                    </div>
+                    <div class="w3-display-container display3">
+                    </div>
+                    <div class="w3-display-container display4">
+                    </div>
+                    <div class="w3-display-container display5">
                     </div>
                 </div>
-                <div class="w3-row-padding" style="margin:0 -16px">
-                    <div class="w3-half w3-margin-bottom">
-                        <div class="w3-display-container">
-                            <img src="assets/img/concert1.jpg" alt="Pisa" style="width:100%">
-                            <span class="w3-display-bottomleft w3-padding">Queer Eye Trivia Night</span>
-                        </div>
+                <div class="w3-third">
+                    <div class="w3-display-container display6">
                     </div>
-                    <div class="w3-half w3-margin-bottom">
-                        <div class="w3-display-container">
-                            <img src="assets/img/concert1.jpg" alt="Paris" style="width:100%">
-                            <span class="w3-display-bottomleft w3-padding">Cat Power</span>
-                        </div>
+                    <div class="w3-display-container display7">
                     </div>
+                    <div class="w3-display-container display8">
+                    </div>
+                    <div class="w3-display-container display9">
+                    </div>
+                    <div class="w3-display-container display10">
+                    </div>
+                </div>
+                <div class="w3-third">
+                    <div class="w3-display-container display11">
+                    </div>
+                    <div class="w3-display-container display12">
+                    </div>
+                    <div class="w3-display-container display13">
+                    </div>
+                    <div class="w3-display-container display14">
+                    </div>
+                    <div class="w3-display-container display15">
+                    </div>
+                </div> --}}
+            </div>
+
+            <!-- Modal for full size images on click-->
+            <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+                <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+                <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                    <img id="img01" class="w3-image">
+                    <h6 id="caption"></h6>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <script>
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+

@@ -8,7 +8,7 @@ module.exports = function(app, passport) {
 
 
 	app.get("/", function(req, res) {
-		app.locals.user = req.user;
+		// app.locals.user = req.user;
 	// db.Example.findAll({}).then(function(dbExamples) {
 		if (req.user) {
 			res.render('index', { isUserLoggedIn: true, user: req.user});
@@ -37,16 +37,6 @@ module.exports = function(app, passport) {
 		failureFlash : true // allow flash messages
 	}));
 
-
-	app.get('/login', function(req, res) {
-		if (req.user) {
-			res.render('login', { isUserLoggedIn: true});
-		}
-		else {
-			res.render('login', { isUserLoggedIn: false, message: req.flash('loginMessage')[0]});
-		}
-		// render the page and pass in any flash data if it exists
-	});
 
 	// =====================================
 	// Account Set Up (shown after initial signup/user creation page) ========
@@ -176,8 +166,12 @@ module.exports = function(app, passport) {
 	})
 
 	app.get("/discover", function(req, res) {
-		res.render("discover", { user: req.user});
-	})
+		if (req.user) {
+			res.render('discover', { isUserLoggedIn: true, user: req.user});
+		}
+		else {
+			res.render('discover', { isUserLoggedIn: false, user: req.user});
+		}	})
 
 	// =====================================
 	// 404 Error Page ======================
@@ -187,6 +181,62 @@ module.exports = function(app, passport) {
 	app.get("*", function(req, res) {
 		res.render("404");
 	});
+
+	// GET route for getting all of the Events
+	app.get("/api/events", function(req, res) {
+		var query = {};
+		if (req.query.user_id) {
+		  query.UserId = req.query.User_id;
+		}
+		db.Event.findAll({
+		  where: query
+		}).then(function(dbEvent) {
+		  res.json(dbEvent);
+		});
+	  });
+	
+	  // Get route for retrieving a single Event
+	  app.get("/api/events/:id", function(req, res) {
+		db.Event.findOne({
+		  where: {
+			id: req.params.id
+		  }
+		}).then(function(dbEvent) {
+		  console.log(dbEvent);
+		  res.json(dbEvent);
+		});
+	  });
+	
+	  // Event route for saving a new Event
+	  app.post("/api/events", function(req, res) {
+		db.Event.create(req.body).then(function(dbEvent) {
+		  res.json(dbEvent);
+		});
+	  });
+	
+	  // DELETE route for deleting Events
+	  app.delete("/api/Events/:id", function(req, res) {
+		db.Event.destroy({
+		  where: {
+			id: req.params.id
+		  }
+		}).then(function(dbEvent) {
+		  res.json(dbEvent);
+		});
+	  });
+	
+	  // PUT route for updating Events
+	  app.put("/api/events", function(req, res) {
+		db.Event.update(
+		  req.body,
+		  {
+			where: {
+			  id: req.body.id
+			}
+		  }).then(function(dbEvent) {
+		  res.json(dbEvent);
+		});
+	  });
 		
 };
 

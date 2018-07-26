@@ -1,10 +1,9 @@
 // Requiring our Users model
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
   
-      // PUT route for updating Users
-     
+    
 };
     
 
