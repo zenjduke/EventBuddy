@@ -156,14 +156,12 @@ module.exports = function(app, passport) {
 	})
 	
 	app.get("/check-in", function(req, res) {
-		// db.Example.findAll({}).then(function(dbExamples) {
-			res.render("event-checkin");
-			// , {
-				// msg: "Welcome!",
-				// examples: dbExamples
-			// });
-		// });
-	})
+		if (req.user) {
+			res.render('event-checkin', { isUserLoggedIn: true, user: req.user});
+		}
+		else {
+			res.render('event-checkin', { isUserLoggedIn: false, user: req.user});
+		}	})
 
 	app.get("/discover", function(req, res) {
 		if (req.user) {
