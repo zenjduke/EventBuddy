@@ -1,0 +1,47 @@
+<!-- Registration Page -->
+<div class="w3-display-container w3-content" style="max-width:1500px;">
+	<img class="w3-image background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px" width="1500">
+	<div class="w3-main" style="margin-left:250px;margin-right:40px">
+		<div class="w3-padding">
+			<div id="signup-form" style="width:75%">
+				<h2> Sign Up</h2>
+
+				<!-- show any messages that come back with authentication -->
+				{{#if message}}
+					<div class="w3-display-container w3-red w3-card-4 alert">
+						<span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright close-alert">&times;</span>{{message}}
+					</div>
+				{{/if}}
+					
+				<img src="../assets/img/avatars/avatar6.png" alt="Avatar" style="width:25%" class="w3-circle w3-margin-top">
+				
+				<!-- Registration FORM -->
+				<form class="w3-padding" action="/signup" method="post">
+					<div class="w3-section">
+						<div class="form-group">
+							<label>
+								<b>Username</b>
+							</label>
+							<input class="w3-input w3-border w3-margin-bottom form-control" type="text" placeholder="Enter Username" name="username"
+							 required>
+						</div>
+						<div class="form-group">
+							<label>
+								<b>Password</b>
+							</label>
+							<input class="w3-input w3-border form-control" type="password" placeholder="Enter Password" name="password" required>
+						</div>
+					</div>
+					<br>
+					<button type="submit" class="w3-button w3-block w3-green w3-section w3-padding">Sign Up</button>
+					<div class="form-group w3-right">Already have an account?
+						<a href="/login">Login </a>or go
+						<a href="/">home</a>.
+						<br> Forgot
+						<a href="#">password?</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>	

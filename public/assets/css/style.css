@@ -1,36 +1,134 @@
 * {margin: 0; padding: 0;}
 
-h2, h3, .w3-bar-item {
-    font-family: 'Permanent Marker', cursive;
-/* font-family: 'Kalam', cursive;  */
+body,h1,h4,h5 {
+  font-family: "Poppins", sans-serif
+  color white;
 }
 
-.discover {
-    background-image: url("../img/concert2.jpg");
-    background-size:cover;
-    height: 100%;
+h3, #logo  {
+  font-family: 'Permanent Marker', cursive;
 }
 
-.live-stream{
-    margin: 20px;
-  }
+body {font-size:16px;}
 
-#happening-now { 
-  width: 1000px;
-  overflow: hidden;
-  margin: 50px auto;
+.alert {
+  padding: 10px 45px 10px 45px;
 }
 
-#survey, #demo-2 {
+.background-image{
+  position: fixed;
+    z-index: -3;
+  background-size:100%;
+}
+
+.close-alert {
+  padding: 5;
+}
+
+.happening-now {
+  height: 55%;
+  max-height: 366px;
+  margin-top: 0%;
+}
+
+.homepage {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.info {
+  height: 80%;
+}
+
+.myprofile, #login {
+  z-index: 6;
+  color: white;
+}
+
+.logout, .update {
+  margin: 10px;
+}
+
+.showcase {
+  background-image: url(/assets/img/concert4.jpg);
+}
+
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:1;cursor:pointer}
+
+.w3-half img:hover{opacity:.8}
+
+.w3-main {
+  z-index: 4;
+}
+
+.welcome {
+  font-family: 'Permanent Marker', cursive;
+  color: white;
+}
+
+#event-result {
+  margin: 20px;
+}
+
+#event-title {
+  width: 15em; 
+  overflow: hidden; /* make sure it hides the content that overflows */
+  white-space: nowrap; /* don't break the line */
+  text-overflow: ellipsis;
+  display: inline-block;
+  font-family: 'Permanent Marker', cursive;
+}
+
+#mini-logo {
+  padding-left: 20px;
+  font-size: 28px;
+}
+
+#profilepic-div {
+  border-radius: 50%;
+  max-height: 170px;
+  padding: 5px;
+  border: #ffffff;
+  border-width: 1px;
+  margin: 20px;
+  border-style: groove;
+}
+
+#survey {
   color: #333
 }
 
-  /* ---------  Streaming Photobanner  --------- */
+#login-form, #signup-form, #account-setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  margin: auto;
+  margin-top: 50px;
+  color: white;
+  overflow: auto;
+  /*Image only BG fallback*/
+  /*background = gradient + image pattern combo*/
+  /* background:  */
+    /* linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6)); */
+}
+
+/* ---------  Streaming Photobanner  --------- */
  
 .photobanner {
-  height: 233px;
+  height: 30%;
   width: 3550px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: flex;
+ }
+
+ .stream-img {
+   height: 90%;
+   max-height: 200px;
  }
 
  /*keyframe animations*/
@@ -93,52 +191,39 @@ h2, h3, .w3-bar-item {
  }
 
 
-  /* ---------  Streaming Table Of Events  --------- */
+/* ---------  Streaming Table Of Events  --------- */
 
 
 #contain {
-    height: 100px;
+    height: 280px;
     overflow-y: scroll;
   }
   #table_scroll {
     width: 100%;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 280px;
+    margin-bottom: 280px;
     border-collapse: collapse;
   }
   #table_scroll thead th {
     padding: 10px;
-    background-color: #ffffff;
-    color: #fff;
   }
   #table_scroll tbody td {
+    font-size: 22px;
     padding: 10px;
-    background-color: #ffffff;
-    color: rgb(1, 146, 151);
   }
 
-    /* ---------  Registration Form  --------- */
+/* ---------  Complete Profile Form  --------- */
 
-
-  #register, #login {
-    height: 100%;
-    /*Image only BG fallback*/
-    
-    /*background = gradient + image pattern combo*/
-    background: 
-      linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
-  }
-  
   body {
     font-family: montserrat, arial, verdana;
   }
 
-  .close {
+  h6, .close, #settings {
     color: #666;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   #msform {
-    width: 65%;
     margin: 50px auto;
     text-align: center;
     position: relative;

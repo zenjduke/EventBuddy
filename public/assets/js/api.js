@@ -1,116 +1,103 @@
+$(function() {
 
-var data;
-var modalShow = false;
-var eventData = [];
-var oArgs = {
+    var data;
+    var eventData = [];
+    var oArgs = {
+        app_key:  "7NcRZmf2tJjpdF89",
+        q: "music",
+        where: "Austin",
+        location: "Austin Texas",
+        // "date": "2013061000-2015062000",
+        page_size: 35,
+        sort_order: "popularity",
+    };
 
-    app_key: "7NcRZmf2tJjpdF89",
+    $(".get-events").on("click", function(e) {
 
-    q: "music",
+        e.preventDefault();
 
-    where: "Austin",
+        document.getElementById("loading").classList.remove("w3-hide");
 
-    location: "Austin Texas",
+        EVDB.API.call( "/events/search", oArgs, function (oData) {
+            document.getElementById("loading").classList.add("w3-hide");
+            data = JSON.stringify(oData);
+            console.log( oData );
+            // document.getElementById("results").append(picture);
+            console.log( "test:" );
+            // console.log(oData.events.event[0]);
+            for ( var i = 0; i < 30; i++ ) {
+                var eventObj = [];
+                if ( oData.events.event[i].title != null ) {
+                    eventObj.title = oData.events.event[i].title;
 
-    // "date": "2013061000-2015062000",
+                } if ( oData.events.event[i].city_name != null ) {
+                    eventObj.city_name = oData.events.event[i].city_name;
 
-    page_size: 35,
+                } if ( oData.events.event[i].description != null ) {
+                    eventObj.description = oData.events.event[i].description;
 
-    sort_order: "popularity",
+                } if ( oData.events.event[i].image != null ) {
+                    eventObj.image = oData.events.event[i].image.medium.url;
 
-};
+                } if ( oData.events.event[i].start_time != null ) {
+                    eventObj.time = oData.events.event[i].start_time;
 
-EVDB.API.call( "/events/search", oArgs, function ( oData ) {
-    data = JSON.stringify( oData );
-    console.log( oData );
-    // document.getElementById("results").append(picture);
-    console.log( "test:" );
-    // console.log(oData.events.event[0]);
-    for ( var i = 0; i < 30; i++ ) {
-        var eventObj = [];
-        if ( oData.events.event[i].title != null ) {
-            eventObj.title = oData.events.event[i].title;
+                } if ( oData.events.event[i].url != null ) {
+                    eventObj.eventfulURL = oData.events.event[i].url;
 
-        } if ( oData.events.event[i].city_name != null ) {
-            eventObj.city_name = oData.events.event[i].city_name;
+                } if ( oData.events.event[i].venue_name != null ) {
+                    eventObj.venue = oData.events.event[i].venue_name;
 
-        } if ( oData.events.event[i].description != null ) {
-            eventObj.description = oData.events.event[i].description;
+                } if ( oData.events.event[i].venue_url != null ) {
+                    eventObj.venueURL = oData.events.event[i].venue_url;
 
-        } if ( oData.events.event[i].image != null ) {
-            eventObj.image = oData.events.event[i].image.medium.url;
+                }if (oData.events.event[i].id != null){
+                    eventObj.id = oData.events.event[i].id;
+                }
+                eventData.push(eventObj);
+                console.log(i+". "+oData.events.event[i].title );
+            }
 
-        } if ( oData.events.event[i].start_time != null ) {
-            eventObj.time = oData.events.event[i].start_time;
+            console.log(eventData);
 
-        } if ( oData.events.event[i].url != null ) {
-            eventObj.eventfulURL = oData.events.event[i].url;
+            for ( var i = 0; i < 15; i++ ) {
 
-        } if ( oData.events.event[i].venue_name != null ) {
-            eventObj.venue = oData.events.event[i].venue_name;
-
-        } if ( oData.events.event[i].venue_url != null ) {
-            eventObj.venueURL = oData.events.event[i].venue_url;
-
-        } if ( oData.events.event[i].id != null ) {
-            eventObj.id = oData.events.event[i].id;
-        }
-
-        eventData.push( eventObj );
-        console.log( i + oData.events.event[i].title );
-    }
-    console.log( eventData );
-
-
-    for ( var i = 0; i < 16; i++ ) {
-        var image = "#image" + i;
-        $( image ).attr( "src", eventData[i].image );
+                tr=$("<tr>").addClass("w3-card");
+                titleCol=$("<td>").text(eventData[i].title).addClass("w3-display-top w3-text-red w3-padding").attr("id", "event-title");
+                venueCol=$("<td>").text(eventData[i].venue);
+                cityCol=$("<td>").text(eventData[i].city_name);
+                timeCol=$("<td>").text(eventData[i].time);
+                attendCol=$("<td>");
 
 
-    }
-    for ( var i = 0; i < 16; i++ ) {
-        var event = "#event" + i;
-        $( event ).html( eventData[i].title );
-        $( event ).attr( "style", "color: gray;" );
-        $( event ).attr( "style", "text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0px -1px 0 #000,0px 1px 0 #000;" );
+                image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
+                imgCol=$("<td>").append(image);
 
-    }
-} );
-$( document ).ready( function () {
-    console.log( "ready!" );
+                attendBtn = $("<button>").text("Attend").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venue",eventData[i].venue).attr("time",eventData[i].time).addClass("attend w3-btn w3-text-white w3-border w3-bottom").attr("user-id", "1");
+                attendCol.append(attendBtn);
 
-    $( ".w3-margin-bottom" ).click( function () {
-        var idNum = parseInt( this.id );
-        console.log( typeof idNum );
+                tr.append(titleCol).append(venueCol).append(cityCol).append(timeCol).append(attendCol);
+                $(".results-table").append(tr);
+            }
+        })     
+    });
+  
+});
 
-        if ( modalShow == true ) {
-                $( '.modal' ).hide(); //hide modal
-                console.log('hide Modal');
-            
-            modalShow=false;
-            console.log("modal false");
-            return;
-        }
-//build the modal
-        else  {
-            $( '#modal-title' ).html( eventData[idNum].title );
-            console.log( "idNum: " + idNum );
-            $( "#modal-image" ).attr( "src", eventData[idNum].image );
-            $( "#modalLocation" ).html(eventData[idNum].city_name );
+// tr=$("<tr>");
+// titleCol=$("<td>").text(eventData[i].title).addClass("w3-display-top w3-text-red w3-padding").attr("id", "event-title");
+// venueCol=$("<td>").text(eventData[i].venue);
+// cityCol=$("<td>").text(eventData[i].city_name);
+// timeCol=$("<td>").text(eventData[i].time);
+// attendCol=$("<td>");
 
-            $( "#modalLocation" ).html(eventData[idNum].location );
-            $( "#modalTime" ).html(eventData[idNum].time );
-            $( "#modalVenue" ).html(eventData[idNum].venue );
-            $( "#modalVenueUrl" ).attr("href",eventData[idNum].venueURL );;
 
-            $( '.modal' ).show();
-            modalShow=true;
-            console.log("modal true");
+// image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
+// imgCol=$("<td>").append(image);
 
-            return;
-        }
-        return;
+// attendBtn = $("<button>").text("Attend").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venue",eventData[i].venue).attr("time",eventData[i].time).addClass("attend w3-btn w3-text-white w3-border w3-bottom").attr("user-id", "1");
+// attendCol.append(attendBtn);
 
-    })
-
-} );
+// tr.append(titleCol).append(venueCol).append(cityCol).append(timeCol).append(attendCol);
+// $(".results-table").append(tr);
+// }

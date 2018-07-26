@@ -9,18 +9,23 @@ module.exports = function(sequelize, Sequelize) {
         type: Sequelize.INTEGER
     },
 
-    firstname: {
+    fname: {
         type: Sequelize.STRING,
         notEmpty: true
     },
 
-    lastname: {
+    lname: {
         type: Sequelize.STRING,
         notEmpty: true
     },
 
     username: {
         type: Sequelize.TEXT
+    },
+
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
     },
 
     email: {
@@ -30,10 +35,38 @@ module.exports = function(sequelize, Sequelize) {
         }
     },
 
-    password: {
+    phone: {
         type: Sequelize.STRING,
-        allowNull: false
     },
+
+    profilepic: {
+        type: Sequelize.STRING,
+    },
+
+    twitter: {
+        type: Sequelize.STRING,
+    },
+
+    facebook: {
+        type: Sequelize.STRING,
+    },
+
+    gplus: {
+        type: Sequelize.STRING,
+    },
+
+    venue: {
+        type: Sequelize.STRING,
+    },
+
+    groupsize: {
+        type: Sequelize.STRING,
+    },
+
+    // sports: {
+    //     type: Sequelize.BOOLEAN,
+    //     defaultValue: false,
+    // },
 
     last_login: {
         type: Sequelize.DATE
@@ -45,6 +78,15 @@ module.exports = function(sequelize, Sequelize) {
     },
 
   });
+
+  User.associate = function(models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    User.hasMany(models.Event, {
+      onDelete: "cascade"
+    });
+  };
+
   // Syncs with DB
   User.sync();
   return User;
