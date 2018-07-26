@@ -78,6 +78,15 @@ module.exports = function(sequelize, Sequelize) {
     },
 
   });
+
+  User.associate = function(models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    User.hasMany(models.Event, {
+      onDelete: "cascade"
+    });
+  };
+
   // Syncs with DB
   User.sync();
   return User;
