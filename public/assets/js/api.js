@@ -73,7 +73,7 @@ $(function() {
                 image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
                 imgCol=$("<td>").append(image);
 
-                attendBtn = $("<button>").addClass("w3-btn w3-text-red").text("Attend").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venue",eventData[i].venue).attr("time",eventData[i].time).addClass("attend w3-btn w3-border").attr("user-id", "1");
+                attendBtn = $("<button>").addClass("w3-btn w3-text-red").text("Attend").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("city",eventData[i].city_name).attr("time",eventData[i].time).addClass("attend w3-btn w3-border");
                 attendCol.append(attendBtn);
 
                 tr.append(titleCol).append(venueCol).append(attendCol);

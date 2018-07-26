@@ -178,9 +178,7 @@ module.exports = function(app, passport) {
 	// =====================================
 
 	// Render 404 page for any unmatched routes
-	app.get("*", function(req, res) {
-		res.render("404");
-	});
+
 
 	// GET route for getting all of the Events
 	app.get("/api/events", function(req, res) {
@@ -236,7 +234,11 @@ module.exports = function(app, passport) {
 		  }).then(function(dbEvent) {
 		  res.json(dbEvent);
 		});
-	  });
+		});
+		
+		app.get("*", function(req, res) {
+			res.render("404");
+		});
 		
 };
 
@@ -249,86 +251,4 @@ function isLoggedIn(req, res, next) {
 	// if they aren't redirect them to the home page
 	res.redirect('/');
 }
-
-
-// if (user) {
-	
-//   } else {
-// 	$(".myprofile").hide();
-// 	$(".logout").hide();
-// 	$(".login").show();
-// 	$(".signup").show();
-// };
-
-// $(".myprofile").show();
-// 		$(".logout").show();
-// 		$(".login").hide();
-// 		$(".signup").hide();
-
-// app.get("/discover", function(req, res) {
-//   // db.Example.findAll({}).then(function(dbExamples) {
-//     res.render("discover");
-//     // , {
-//       // msg: "Welcome!",
-//       // examples: dbExamples
-//     // });
-//   // });
-// })
-
-// app.get("/events", function(req, res) {
-//   // db.Example.findAll({}).then(function(dbExamples) {
-//     res.render("event-list");
-//     // , {
-//       // msg: "Welcome!",
-//       // examples: dbExamples
-//     // });
-//   // });
-// })
-
-// app.get("/live", function(req, res) {
-//   // db.Example.findAll({}).then(function(dbExamples) {
-//     res.render("events-now");
-//     // , {
-//       // msg: "Welcome!",
-//       // examples: dbExamples
-//     // });
-//   // });
-// })
-
-// app.get("/check-in", function(req, res) {
-//   // db.Example.findAll({}).then(function(dbExamples) {
-//     res.render("event-checkin");
-//     // , {
-//       // msg: "Welcome!",
-//       // examples: dbExamples
-//     // });
-//   // });
-// })
-
-//   // // Load example page and pass in an example by id
-//   // app.get("/profile/:id", function(req, res) {
-//   //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-//   //     res.render("example", {
-//   //       example: dbExample
-//   //     });
-//   //   });
-//   // });
-
-//   // Render 404 page for any unmatched routes
-//   app.get("*", function(req, res) {
-//     res.render("404");
-//   });
-// };
-
-// };
-
-//   // Load example page and pass in an example by id
-//   app.get("/profile/:id", function(req, res) {
-//     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-//       res.render("example", {
-//         example: dbExample
-//       });
-//     });
-//   });
-
 

@@ -73,17 +73,14 @@ else {
 $(document).on("click", ".attend", function (e) {
 
       e.preventDefault();
-
     //   var eventData = $(this).attr('data-id');
     // var eventObject = JSON.parse(eventData);
 
-
       var id = $(this).data("id");
-      var user = $(this).attr("user-id");
-
+      var user = $("#user-id").val();
       var title = $(this).attr("title");
       var venue = $(this).attr("venue");
-      var location = $(this).attr("location");
+      var city = $(this).attr("city");
       var time = $(this).attr("time");
 
       console.log(id);
@@ -94,7 +91,7 @@ $(document).on("click", ".attend", function (e) {
         eventID: id,
         eventTitle: title,
         eventVenue: venue,
-        eventLocation: location,
+        eventLocation: city,
         eventTime: time,
         toAttend: true,
         attended: false,
