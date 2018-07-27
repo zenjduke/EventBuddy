@@ -10,11 +10,165 @@
             <div class="w3-hide w3-center" id="loading">
                 <img src="/assets/img/loading.gif" style="position:fixed" width="100px">
             </div>
-            <button class="w3-btn w3-text-white w3-border get-events w3-right">Search Events</button>
+            <div class="input-field col s12">
+                <label>What is your location?</label>
+                <input id="location" type="text">
+            </div>
+            <div class="input-field col s12">
+                <select id="cat">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="music">Concerts</option>
+                    <option value="conference">Conferences</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="movies_film">Film</option>
+                    <option value="food">Food</option>
+                    <option value="fundraisers">Fundraisers</option>
+                    <option value="art">Galleries</option>
+                    <option value="support">Health</option>
+                    <option value="fundraisers">Holiday</option>
+                    <option value="family_fun_kids">Kids & Family</option>
+                    <option value="11">Literary</option>
+                    <option value="12">Movies</option>
+                    <option value="13">Museums</option>
+                    <option value="community">Neighborhood</option>
+                    <option value="15">Network</option>
+                    <option value="16">Nightlife</option>
+                    <option value="17">Organizations</option>
+                    <option value="18">On Campus</option>
+                    <option value="19">Outdoors</option>
+                    <option value="20">Performing Arts</option>
+                    <option value="21">Pets</option>
+                    <option value="22">Politics</option>
+                </select>
+            </div>
+            <button class="w3-btn w3-text-white w3-border get-events w3-right" id="get-events">Search Events</button>
 
             <!-- Photo grid (modal) -->
-            <div class="w3-row w3-row-padding">
-                <div class="w3-table w3-card results-table w3-hoverable w3-white w3-padding">
+            <div class="w3-container">
+                <h3>Discover Events And Meet New People</h3>
+                <h6>Find events anywhere in the world:</h6>
+            </div>
+
+
+            <div class="w3-half">
+                <div class="w3-row-padding" style="margin:0;  ">
+                    <div id="0" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image0" src="assets/img/concert1.jpg" alt="New York" style="width:95%;border-radius: 20px;">
+                            <span id="event0" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                    <div id="1" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image1" src="assets/img/concert1.jpg" alt="San Francisco" style="width:95%;border-radius: 20px;">
+                            <span id="event1" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-row-padding" style="margin:0 ">
+                    <div id="2" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image2" src="assets/img/concert1.jpg" alt="Pisa" style="width:95%;border-radius: 20px;">
+                            <span id="event2" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                    <div id="3" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image3" src="assets/img/concert1.jpg" alt="Paris" style="width:95%;border-radius: 20px;">
+                            <span id="event3" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-half">
+                <div class="w3-row-padding" style="margin:0 ">
+                    <div id="4" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image4" src="assets/img/concert1.jpg" alt="New York" style="width:95%;border-radius: 20px;">
+                            <span id="event4" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                    <div id="5" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image5" src="assets/img/concert1.jpg" alt="San Francisco" style="width:95%;border-radius: 20px;">
+                            <span id="event5" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-row-padding" style="margin:0 ">
+                    <div id="6" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image6" src="assets/img/concert1.jpg" alt="Pisa" style="width:95%;border-radius: 20px;">
+                            <span id="event6" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                    <div id="7" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image7" src="assets/img/concert1.jpg" alt="Paris" style="width:95%;border-radius: 20px;">
+                            <span id="event7" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w3-half">
+                <div class="w3-row-padding" style="margin:0 ">
+                    <div id="8" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image8" src="assets/img/concert1.jpg" alt="New York" style="width:95%;border-radius: 20px;">
+                            <span id="event8" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                    <div id="9" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image9" src="assets/img/concert1.jpg" alt="San Francisco" style="width:95%;border-radius: 20px;">
+                            <span id="event9" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-row-padding" style="margin:0 ">
+                    <div id="10" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image10" src="assets/img/concert1.jpg" alt="Pisa" style="width:95%;border-radius: 20px;">
+                            <span id="event10" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                    <div id="11" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image11" src="assets/img/concert1.jpg" alt="Paris" style="width:95%;border-radius: 20px;">
+                            <span id="event11" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-half">
+                <div class="w3-row-padding" style="margin:0 ">
+                    <div id="12" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image12" src="assets/img/concert1.jpg" alt="New York" style="width:95%;border-radius: 20px;">
+                            <span id="event12" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                    <div id="13" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image13" src="assets/img/concert1.jpg" alt="San Francisco" style="width:95%;border-radius: 20px;">
+                            <span id="event13" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-row-padding" style="margin:0 ">
+                    <div id="14" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image14" src="assets/img/concert1.jpg" alt="Pisa" style="width:95%;border-radius: 20px;">
+                            <span id="event14" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
+                    <div id="15" class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container selection">
+                            <img id="image15" src="assets/img/concert1.jpg" alt="Paris" style="width:95%;border-radius: 20px;">
+                            <span id="event15" class="w3-display-bottomleft w3-padding">loading...</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -30,11 +184,61 @@
     </div>
 
     <script>
-        // Modal Image Gallery
-        function onClick(element) {
-            document.getElementById("img01").src = element.src;
-            document.getElementById("modal01").style.display = "block";
-            var captionText = document.getElementById("caption");
-            captionText.innerHTML = element.alt;
+
+        function getEventsFoo(location = 'Austin', category = 'music') {
+            var oArgs = {
+                app_key: "7NcRZmf2tJjpdF89",
+                q: category,
+                // where: "Austin",
+                location: location,
+                page_size: 16,
+                sort_order: "popularity"
+            };
+
+            EVDB.API.call("/events/search", oArgs, function (oData) {
+                data = JSON.stringify(oData);
+                console.log(oData);
+                // document.getElementById("results").append(picture);
+                console.log("test:");
+                // console.log(oData.events.event[0]);
+                for (var i = 0; i < 16; i++) {
+                    var eventObj = {};
+                    if (oData.events.event[i].title != null) {
+                        eventObj.title = oData.events.event[i].title;
+                    } if (oData.events.event[i].image != null) {
+                        eventObj.image = oData.events.event[i].image.medium.url;
+                    }
+
+                    eventData.push(eventObj);
+                    console.log(i + oData.events.event[i].title);
+                    $(`#image${i}`).attr("src", eventObj.image);
+                    var event = "#event" + i;
+                    $(event).html(eventObj.title);
+                    $(event).attr("style", "color: gray;");
+                    $(event).attr("style", "text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0px -1px 0 #000,0px 1px 0 #000;");
+
+
+                }
+                console.log(eventData);
+
+            });
         }
+
+        $(document).ready(function () {
+            console.log("ready!");
+            $("#get-events").click(function () {
+                var locationInput = $("#location").val();
+                var categoryInput = $("#cat").val().join(",");
+                getEventsFoo(locationInput, categoryInput)
+
+            })
+
+            // Modal Image Gallery
+            function onClick(element) {
+                document.getElementById("img01").src = element.src;
+                document.getElementById("modal01").style.display = "block";
+                var captionText = document.getElementById("caption");
+                captionText.innerHTML = element.alt;
+            }
+        })
     </script>
