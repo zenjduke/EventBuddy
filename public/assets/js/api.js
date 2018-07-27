@@ -30,7 +30,6 @@ var oArgs = {
 EVDB.API.call( "/events/search", oArgs, function ( oData ) {
     data = JSON.stringify(oData);
     console.log(oData);
-    console.log( "Test:" );
     for (var i = 0; i < 30; i++) {
         var eventObj = [];
         if ( oData.events.event[i].title != null ) {
@@ -65,9 +64,8 @@ EVDB.API.call( "/events/search", oArgs, function ( oData ) {
         eventData.push(eventObj);
     }
     console.log(eventData);
-
+    document.getElementById("loading").classList.add("w3-hide");
     for ( var i = 0; i < 30; i++ ) {
-
         tr=$("<tr>").addClass("w3-card w3-padding w3-white").attr("id", "scroll-row");
         titleCol=$("<td>").text(eventData[i].title).addClass("w3-text-red w3-padding").attr("id", "event-title");
         venueCol=$("<td>").text(eventData[i].venue);
@@ -75,7 +73,7 @@ EVDB.API.call( "/events/search", oArgs, function ( oData ) {
         timeCol=$("<td>").text(eventData[i].time);
         attendCol=$("<td>");
         //image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
-       
+        
         //imgCol=$("<td>").append(image);
 
         attendBtn = $("<button>").text("Get Info").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venue",eventData[i].venue).attr("time",eventData[i].time).addClass("w3-btn w3-text-white w3-border w3-bottom").attr("user-id", "1").attr("id","learn-more");
@@ -85,43 +83,4 @@ EVDB.API.call( "/events/search", oArgs, function ( oData ) {
         tr.append(titleCol).append(venueCol).append(timeCol).append(attendCol);
         $("#table_scroll").append(tr);
     }
-});
-
-$(document).ready( function () {
-    console.log("Page ready!");
-
-    $(".event-info").click( function () {
-        var idNum = parseInt( this.id );
-        console.log( typeof idNum );
-
-        if ( modalShow == true ) {
-            $( '.modal' ).hide(); //hide modal
-            console.log( 'hide Modal' );
-
-            modalShow = false;
-            console.log( "modal false" );
-            return;
-        }
-        //build the modal
-        else {
-            $( '#modal-title' ).html( eventData[idNum].title );
-            console.log( "idNum: " + idNum );
-            $( "#modal-image" ).attr( "src", eventData[idNum].image );
-            $( "#modalLocation" ).html( eventData[idNum].city_name );
-
-            $( "#modalLocation" ).html( eventData[idNum].location );
-            $( "#modalTime" ).html( eventData[idNum].time );
-            $( "#modalVenue" ).html( eventData[idNum].venue );
-            $( "#modalVenueUrl" ).attr( "href", eventData[idNum].venueURL );;
-
-            $( '.modal' ).show();
-            modalShow = true;
-            console.log( "modal true" );
-
-            return;
-        }
-        return;
-
-    } )
-
 });

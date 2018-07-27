@@ -139,6 +139,7 @@ td {
   max-height:100%;
   background:#def;
   overflow:auto;
+  float: right;
 }
 
 #survey {
@@ -395,4 +396,12 @@ td {
   #progressbar li.active:before,  #progressbar li.active:after{
     background: #27AE60;
     color: white;
+  }
+
+   /*Media Queries*/
+
+  @media screen and (max-width: 992px) {
+    #logo {
+      margin: 100px 0 0 0;
+    }
   }

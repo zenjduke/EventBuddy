@@ -80,73 +80,64 @@ function createAccount(info) {
 $(document).on("click", ".get-events", function (e) {
 
   e.preventDefault();
-
+  document.getElementById("table_scroll").classList.add("w3-hide");
   document.getElementById("loading").classList.remove("w3-hide");
 
+  var oArgs = {
+    app_key: "7NcRZmf2tJjpdF89",
+    q: $("#cat").val(),
+    location: $("#location").val(),
+    page_size: 35
+  };
+
   EVDB.API.call( "/events/search", oArgs, function (oData) {
-      document.getElementById("loading").classList.add("w3-hide");
-      id = $("#user-id").val();
-      data = JSON.stringify(oData);
-      console.log(oData);
-      // document.getElementById("results").append(picture);
-      console.log("USER SEARCH:");
-      // console.log(oData.events.event[0]);
-      for ( var i = 0; i < 30; i++ ) {
-          var eventObj = [];
-          if ( oData.events.event[i].title != null ) {
-              eventObj.title = oData.events.event[i].title;
-
-          } if ( oData.events.event[i].city_name != null ) {
-              eventObj.city_name = oData.events.event[i].city_name;
-
-          } if ( oData.events.event[i].description != null ) {
-              eventObj.description = oData.events.event[i].description;
-
-          } if ( oData.events.event[i].image != null ) {
-              eventObj.image = oData.events.event[i].image.medium.url;
-
-          } if ( oData.events.event[i].start_time != null ) {
-              eventObj.time = oData.events.event[i].start_time;
-
-          } if ( oData.events.event[i].url != null ) {
-              eventObj.eventfulURL = oData.events.event[i].url;
-
-          } if ( oData.events.event[i].venue_name != null ) {
-              eventObj.venue = oData.events.event[i].venue_name;
-
-          } if ( oData.events.event[i].venue_url != null ) {
-              eventObj.venueURL = oData.events.event[i].venue_url;
-
-          }if (oData.events.event[i].id != null){
-              eventObj.id = oData.events.event[i].id;
-          }
-          eventData.push(eventObj);
-          console.log(i+". "+oData.events.event[i].title );
-      }
-      console.log(eventData);
-
-      for ( var i = 0; i < 15; i++ ) {
-          
-          resultPanel = $("<div>").addClass("w3-panel w3-display-container w3-card w3-white").attr("onclick","document.getElementById('infoModal').style.display='block'").attr("id", "result-panel").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venueURL",eventData[i].venueURL).attr("city",eventData[i].city_name).attr("time",eventData[i].time).attr("user-id", id);
-
-          resultImageDiv = $("<div>").addClass("w3-container").attr("id", "result-imgDiv");
-
-          resImg = $("<img>").attr("src", eventData[i].image).attr("id", "resImg");
-          resultImageDiv.append(resImg);
-
-          resultInfo = $("<div>").addClass("w3-container").attr("id", "result-info")
-          resultTitle = $("<h3>").text(eventData[i].title);
-          resultTime = $("<h6>").text(eventData[i].time);
-          resultVenue = $("<h4>").text(eventData[i].venue);
-          resultInfo.append(resultTitle).append(resultVenue).append(resultTime);
-
-          //learnBtn = $("<button>").addClass("w3-btn w3-red w3-text-white w3-display-middle").attr("id", "learn-more-btn").attr("type", "button");
-          //resultPanel.append(learnBtn);
-          resultPanel.append(resultImageDiv).append(resultInfo);
-          $(".result-row").append(resultPanel);
-      }
-      })     
-});
+    document.getElementById("loading").classList.add("w3-hide");
+    id = $("#user-id").val();
+    data = JSON.stringify(oData);
+    console.log(oData);
+    // document.getElementById("results").append(picture);
+    console.log("USER SEARCH:");
+    // console.log(oData.events.event[0]);
+    for ( var i = 0; i < 30; i++ ) {
+        var eventObj = {};
+        if ( oData.events.event[i].title != null ) {
+            eventObj.title = oData.events.event[i].title;
+        } if ( oData.events.event[i].city_name != null ) {
+            eventObj.city_name = oData.events.event[i].city_name;
+        } if ( oData.events.event[i].description != null ) {
+            eventObj.description = oData.events.event[i].description;
+        } if ( oData.events.event[i].image != null ) {
+            eventObj.image = oData.events.event[i].image.medium.url;
+        } if ( oData.events.event[i].start_time != null ) {
+            eventObj.time = oData.events.event[i].start_time;
+        } if ( oData.events.event[i].url != null ) {
+            eventObj.eventfulURL = oData.events.event[i].url;
+        } if ( oData.events.event[i].venue_name != null ) {
+            eventObj.venue = oData.events.event[i].venue_name;
+        } if ( oData.events.event[i].venue_url != null ) {
+            eventObj.venueURL = oData.events.event[i].venue_url;
+        }if (oData.events.event[i].id != null){
+            eventObj.id = oData.events.event[i].id;
+        }
+        resultPanel = $(
+        `<div class="w3-panel w3-display-container w3-card w3-white" id="result-panel" 
+          onclick ="document.getElementById('infoModal').style.display='block'"
+          id=result-panel" data-id=${eventObj.id} title="${eventObj.title}"
+          venue="${eventObj.venue}" venueURL="${eventObj.venueURL}"
+          city="${eventObj.city_name}" time=${eventObj.time} user-id=${id}>
+          <div>
+            <div class="w3-display-container" id="result-info">
+              <img id="resImg" src="${eventObj.image}">
+              <h3>${eventObj.title}</h3>
+              <h4>${eventObj.venue}</h4>
+              <h6>${eventObj.time}</h6>
+            </div>
+          </div>
+        </div>`)
+        $(".result-row").prepend(resultPanel); // always appends ?? do you want to reset to []
+    }
+    })     
+});  
   
 $(document).on("click", "#result-panel", function (e) {
 
