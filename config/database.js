@@ -1,10 +1,9 @@
-// config/database.js
 module.exports = {
     'connection': {
-        'host': 'localhost',
-        'user': 'root',
-        'password': 'root'
+        'host': process.env.HOST,
+        'user': process.env.USER,
+        'password': process.env.PASSWORD
     },
-	'database': 'EventBuddy',
+	'database': process.env.DATABASE,
     'users_table': 'Users'
 };
