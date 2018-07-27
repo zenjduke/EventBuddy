@@ -121,13 +121,6 @@ module.exports = function(app, passport) {
 			}
 			// render the page and pass in any flash data if it exists
 		})
-<<<<<<< HEAD:routes/htmlRoutes.js
-	// =====================================
-	// Events/Live/Check-In/Discover Pages =
-	// =====================================
-	
-  app.get("/discover", function(req, res) {
-=======
 		
 		app.get("/check-in", function(req, res) {
 			if (req.user) {
@@ -139,7 +132,6 @@ module.exports = function(app, passport) {
 		})
 
 		app.get("/discover", function(req, res) {
->>>>>>> master:routes/routes.js
 			if (req.user) {
 				console.log(req.user);
 				res.render('discover', {isUserLoggedIn: true, user: req.user});
