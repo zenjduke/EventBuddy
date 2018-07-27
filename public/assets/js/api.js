@@ -65,8 +65,6 @@ EVDB.API.call( "/events/search", oArgs, function ( oData ) {
         eventData.push(eventObj);
     }
     console.log(eventData);
-    document.getElementById("loading").classList.add("w3-hide");
-
 
     for ( var i = 0; i < 30; i++ ) {
 
@@ -76,9 +74,9 @@ EVDB.API.call( "/events/search", oArgs, function ( oData ) {
         // cityCol=$("<td>").text(eventData[i].city_name);
         timeCol=$("<td>").text(eventData[i].time);
         attendCol=$("<td>");
-        image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
+        //image = $("<img>").attr("src", eventData[i].image).attr("style","width:100%").attr("onclick","onClick(this)").attr("alt",eventData[i].title).attr("id", "event-result");
        
-        imgCol=$("<td>").append(image);
+        //imgCol=$("<td>").append(image);
 
         attendBtn = $("<button>").text("Get Info").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venue",eventData[i].venue).attr("time",eventData[i].time).addClass("w3-btn w3-text-white w3-border w3-bottom").attr("user-id", "1").attr("id","learn-more");
 
@@ -91,7 +89,6 @@ EVDB.API.call( "/events/search", oArgs, function ( oData ) {
 
 $(document).ready( function () {
     console.log("Page ready!");
-    document.getElementById("loading").classList.remove("w3-hide");
 
     $(".event-info").click( function () {
         var idNum = parseInt( this.id );
@@ -128,17 +125,3 @@ $(document).ready( function () {
     } )
 
 });
-
-// attendBtn = $("<button>").addClass("w3-btn w3-text-red").text("Attend").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("city",eventData[i].city_name).attr("time",eventData[i].time).addClass("attend w3-btn w3-border");
-// attendCol.append(attendBtn);
-
-// tr.append(titleCol).append(venueCol).append(attendCol);
-// $(".results-table").append(tr);
-
-// tr=$("<tr>");
-// titleCol=$("<td>").text(eventData[i].title).addClass("w3-display-top w3-text-red w3-padding").attr("id", "event-title");
-// venueCol=$("<td>").text(eventData[i].venue);
-// cityCol=$("<td>").text(eventData[i].city_name);
-// timeCol=$("<td>").text(eventData[i].time);
-// attendCol=$("<td>");
-

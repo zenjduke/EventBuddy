@@ -3,19 +3,19 @@
 
 <!-- Content -->
 <div class="w3-display-container w3-content discover" style="max-width:1500px;">
-    <input type="hidden" id="user-id" value="{{user.id}}">
     <img class="w3-image background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px;" width="1500">
     <div class="w3-main" style="margin-left:250px;margin-right:40px">
         <div class="w3-padding">
             <div class="w3-container w3-text-white">
                 <h1 class="w3-text-white" id="logo">Find Events Happening Near You</h1>
             </div>
-                <img src="/assets/img/loading.gif" style="position:fixed" width="100px">
             </div>
             <button class="w3-btn w3-white w3-text-red w3-border get-events w3-right">Search Events</button>
             <div class="w3-row w3-row-padding result-row">
                 <div class="w3-container w3-padding-32">
                     <div class="w3-hide w3-center" id="loading">
+                        <img src="/assets/img/loading.gif" style="position:fixed" width="100px">
+                    </div>
                     <div id="contain">
                         <table class="w3-hoverable w3-bordered w3-border" border="0" id="table_scroll">
                         </table>
