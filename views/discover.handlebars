@@ -1,34 +1,59 @@
+<!-- Hidden Element Containing Value of Logged In UserID -->
+<input type="hidden" value="{{user.id}}" id="user-id">
+
 <!-- Content -->
 <div class="w3-display-container w3-content discover" style="max-width:1500px;">
     <input type="hidden" id="user-id" value="{{user.id}}">
-    <img class="w3-image background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px" width="1500">
+    <img class="w3-image background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px;" width="1500">
     <div class="w3-main" style="margin-left:250px;margin-right:40px">
         <div class="w3-padding">
             <div class="w3-container w3-text-white">
-                <h1 class="w3-text-white" id="logo">Discover Events Happening Near You</h1>
+                <h1 class="w3-text-white" id="logo">Find Events Happening Near You</h1>
             </div>
-            <div class="w3-hide w3-center" id="loading">
                 <img src="/assets/img/loading.gif" style="position:fixed" width="100px">
             </div>
+<<<<<<< HEAD
             <button class="w3-btn w3-text-white w3-border get-events w3-right">Search Events</button>
 
             <!-- Photo grid (modal) -->
             <div class="w3-row w3-row-padding">
                 <div class="w3-table w3-card results-table w3-hoverable w3-white w3-padding">
                 </div>
-            </div>
-
-            <!-- Modal for full size images on click-->
-            <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
-                <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
-                <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-                    <img id="img01" class="w3-image">
-                    <h6 id="caption"></h6>
-                </div>
+=======
+            <button class="w3-btn w3-white w3-text-red w3-border get-events w3-right">Search Events</button>
+            <div class="w3-row w3-row-padding result-row">
+                <div class="w3-container w3-padding-32">
+                    <div class="w3-hide w3-center" id="loading">
+                    <div id="contain">
+                        <table class="w3-hoverable w3-bordered w3-border" border="0" id="table_scroll">
+                        </table>
+                    </div>   
+                </div>    
+>>>>>>> db42731ead35944c3b705e301f167dd1fec7328f
             </div>
         </div>
     </div>
+</div>
 
+<!-- Event Information Modal -->
+<div id="infoModal" class="w3-modal w3-card">
+  <div class="w3-modal-content">
+
+    <header class="w3-container w3-red"> 
+      <h2 id="modalTitle"></h2>
+    </header>
+
+    <div class="w3-container">
+        <h3 id ="modalVenue"></h6>
+        <h5 id="modalTime"></h6>
+        <h6 id ="modalCity"></h6>
+        <div class="w3-container w3-right">
+            <img id="modalImg">
+        </div>
+        <a target="_blank" id="modalURL"></a>
+    </div>
+
+<<<<<<< HEAD
     <script>
         // Modal Image Gallery
         function onClick(element) {
@@ -38,3 +63,14 @@
             captionText.innerHTML = element.alt;
         }
     </script>
+=======
+    <footer class="w3-container w3-padding w3-red">
+       <button style="margin:5px:" type="button" class="w3-btn w3-border">Interested!</button>
+    <button type="button" class="attend w3-btn w3-border">I'm going!</button>
+     <span onclick="document.getElementById('infoModal').style.display='none'" 
+      class="w3-button w3-display-bottomright">&times;</span>
+    </footer>
+
+  </div>
+</div>
+>>>>>>> db42731ead35944c3b705e301f167dd1fec7328f

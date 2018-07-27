@@ -37,7 +37,8 @@ module.exports = function(sequelize, Sequelize) {
             allowNull: false
           }
     }
-    });
+
+  });
 
     Event.associate = function(models) {
         // We're saying that a Post should belong to an Author
