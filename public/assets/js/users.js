@@ -1,8 +1,9 @@
 $(function () {
-
+  // Gets events from our database to display in each profile.
   var userID = $("#user-id").val();
-  //getEvents();
+  getEvents();
 
+  // UPDATES user account to include personal details.
   $(".setup-btn").on("click", function (event) {
 
     event.preventDefault();
@@ -32,7 +33,7 @@ $(function () {
   })
 });
 
-// This function adds a selected event in our database
+// This function adds a user-selected event in our database
 function addEvent(info) {
   $.post("/api/events", info, function() {
     alert("Attending Event!");
