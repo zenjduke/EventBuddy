@@ -118,7 +118,6 @@ module.exports = function(app, passport) {
 				res.render('profile', { isUserLoggedIn: false, user: req.user});
 			}
 		})
-=======
 	// =====================================
 	// Events/Live/Check-In/Discover Pages =
 	// =====================================
