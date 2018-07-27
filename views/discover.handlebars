@@ -16,122 +16,128 @@
             </div>
         </div>
 
-        <button onclick= "document.getElementById('eventSearchModal').style.display='block'" class="w3-btn w3-white w3-text-red w3-border w3-right">Search Events</button>
+        <button onclick="document.getElementById('eventSearchModal').style.display='block'" class="w3-btn w3-white w3-text-red w3-border w3-right">Search Events</button>
 
         <div class="w3-row w3-row-padding result-row">
         </div>
-         <div class="w3-container w3-padding-32">
+        <div class="w3-container w3-padding-32">
             <div id="contain">
                 <table class="w3-hoverable w3-bordered w3-border" border="0" id="table_scroll">
                 </table>
-            </div>   
-        </div>  
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- Event Search  Modal -->
 <div id="eventSearchModal" class="w3-modal w3-card">
-  <div class="w3-modal-content">
+    <div class="w3-modal-content">
 
-    <header class="w3-container w3-red"> 
-      <h2>Find Your Perfect Match</h2>
-    </header>
+        <header class="w3-container w3-red">
+            <h2>Find Your Perfect Match</h2>
+        </header>
 
-    <div class="w3-container">
-         <div class="input-field col s12">
-            <h2>What is your location?</h2>
-            <input class="w3-input" id="location" type="text">
-        </div>
+        <div class="w3-container">
             <div class="input-field col s12">
-            <h2>Select An Event Type:</h2>
-            <select class="w3-input" id="cat">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="music">Concerts</option>
-                <option value="conference">Conferences</option>
-                <option value="comedy">Comedy</option>
-                <option value="movies_film">Film</option>
-                <option value="food">Food</option>
-                <option value="fundraisers">Fundraisers</option>
-                <option value="art">Galleries</option>
-                <option value="support">Health</option>
-                <option value="fundraisers">Holiday</option>
-                <option value="family_fun_kids">Kids & Family</option>
-                <option value="11">Literary</option>
-                <option value="12">Movies</option>
-                <option value="13">Museums</option>
-                <option value="community">Neighborhood</option>
-                <option value="15">Network</option>
-                <option value="16">Nightlife</option>
-                <option value="17">Organizations</option>
-                <option value="18">On Campus</option>
-                <option value="19">Outdoors</option>
-                <option value="20">Performing Arts</option>
-                <option value="21">Pets</option>
-                <option value="22">Politics</option>
-            </select><br>
+                <h2>What is your location?</h2>
+                <input class="w3-input" id="location" type="text">
+            </div>
+            <div class="input-field col s12">
+                <h2>Select An Event Type:</h2>
+                <select class="w3-input" id="cat">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="music">Concerts</option>
+                    <option value="conference">Conferences</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="movies_film">Film</option>
+                    <option value="food">Food</option>
+                    <option value="fundraisers">Fundraisers</option>
+                    <option value="art">Galleries</option>
+                    <option value="support">Health</option>
+                    <option value="fundraisers">Holiday</option>
+                    <option value="family_fun_kids">Kids & Family</option>
+                    <option value="books">Literary</option>
+                    <option value="movies_film">Movies</option>
+                    <option value="attractions">Museums</option>
+                    <option value="community">Neighborhood</option>
+                    <option value="business">Business & Networking</option>
+                    <option value="singles_social">Nightlife</option>
+                    <option value="clubs_associations">Organizations</option>
+                    <option value="schools_alumni">On Campus</option>
+                    <option value="outdoors_recreation">Outdoors</option>
+                    <option value="performing_arts">Performing Arts</option>
+                    <option value="pets">Pets</option>
+                    <option value="politics_activism">Politics</option>
+                    <option value="sales">Sales & Retail</option>
+                    <option value="science">Science</option>
+                    <option value="religion_spirituality">Religion & Spirituality</option>
+                    <option value="sports">Sports</option>
+                    <option value="technology">Technology</option>
+                </select>
+                <br>
+            </div>
+
         </div>
+
+        <footer class="w3-container w3-padding w3-red">
+            <button onclick="document.getElementById('eventSearchModal').style.display='none'" class="w3-btn w3-white w3-text-red w3-border get-events w3-left">Search Events</button>
+            <span onclick="document.getElementById('eventSearchModal').style.display='none'" class="w3-button w3-display-bottomright">&times;</span>
+        </footer>
 
     </div>
-
-    <footer class="w3-container w3-padding w3-red">
-        <button onclick="document.getElementById('eventSearchModal').style.display='none'"  class="w3-btn w3-white w3-text-red w3-border get-events w3-left">Search Events</button>
-     <span onclick="document.getElementById('eventSearchModal').style.display='none'" 
-      class="w3-button w3-display-bottomright">&times;</span>
-    </footer>
-
-  </div>
 </div>
 
 <!-- Event Information Modal -->
 <div id="infoModal" class="w3-modal w3-card">
-  <div class="w3-modal-content">
+    <div class="w3-modal-content">
 
-    <header class="w3-container w3-red"> 
-      <h2 id="modalTitle"></h2>
-    </header>
+        <header class="w3-container w3-red">
+            <h2 id="modalTitle"></h2>
+        </header>
 
-    <div class="w3-container">
-        <h3 id ="modalVenue"></h6>
-        <h5 id="modalTime"></h6>
-        <h6 id ="modalCity"></h6>
-        <div class="w3-container w3-right">
-            <img id="modalImg">
+        <div class="w3-container">
+            <h3 id="modalVenue">
+                </h6>
+                <h5 id="modalTime">
+                    </h6>
+                    <h6 id="modalCity"></h6>
+                    <div class="w3-container w3-right">
+                        <img id="modalImg">
+                    </div>
+                    <a target="_blank" id="modalURL"></a>
         </div>
-        <a target="_blank" id="modalURL"></a>
+
+        <footer class="w3-container w3-padding w3-red">
+            <button style="margin:5px:" type="button" class="w3-btn w3-border">Interested!</button>
+            <button type="button" class="attend w3-btn w3-border">I'm going!</button>
+            <span onclick="document.getElementById('infoModal').style.display='none'" class="w3-button w3-display-bottomright">&times;</span>
+        </footer>
+
     </div>
-
-    <footer class="w3-container w3-padding w3-red">
-       <button style="margin:5px:" type="button" class="w3-btn w3-border">Interested!</button>
-    <button type="button" class="attend w3-btn w3-border">I'm going!</button>
-     <span onclick="document.getElementById('infoModal').style.display='none'" 
-      class="w3-button w3-display-bottomright">&times;</span>
-    </footer>
-
-  </div>
 </div>
 
 
 <script>
 
-    function pageScroll() {  
-      var objDiv = document.getElementById("contain");
-      objDiv.scrollTop = objDiv.scrollTop + 1;  
-      $('p:nth-of-type(1)').html('scrollTop : '+ objDiv.scrollTop);
-      $('p:nth-of-type(2)').html('scrollHeight : ' + objDiv.scrollHeight);
-      if (objDiv.scrollTop == (objDiv.scrollHeight - 380)) {
-        objDiv.scrollTop = 0;
-      }
-      my_time = setTimeout('pageScroll()', 25);
+    function pageScroll() {
+        var objDiv = document.getElementById("contain");
+        objDiv.scrollTop = objDiv.scrollTop + 1;
+        $('p:nth-of-type(1)').html('scrollTop : ' + objDiv.scrollTop);
+        $('p:nth-of-type(2)').html('scrollHeight : ' + objDiv.scrollHeight);
+        if (objDiv.scrollTop == (objDiv.scrollHeight - 380)) {
+            objDiv.scrollTop = 0;
+        }
+        my_time = setTimeout('pageScroll()', 25);
     };
 
     // ---- Scrolling Table Of Events
-    $(document).ready(function() {
-      pageScroll();
-       $("#contain").mouseover(function() {
-        clearTimeout(my_time);
-     }).mouseout(function() {
+    $(document).ready(function () {
         pageScroll();
-      });
+        $("#contain").mouseover(function () {
+            clearTimeout(my_time);
+        }).mouseout(function () {
+            pageScroll();
+        });
     });
 
      //  $(document).on('mouseenter', '#result-panel', function () {
