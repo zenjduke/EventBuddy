@@ -6,15 +6,22 @@ module.exports = function(app, passport) {
 		// HOME PAGE (with login links) ========
 		// =====================================
 
-
 		app.get("/", function(req, res) {
-			// app.locals.user = req.user;
-		// db.Example.findAll({}).then(function(dbExamples) {
 			if (req.user) {
-				res.render('index', { isUserLoggedIn: true, user: req.user});
+				res.render('index', { isHome: true, isUserLoggedIn: true, user: req.user});
 			}
 			else {
-				res.render('index', { isUserLoggedIn: false, user: req.user});
+				res.render('index', { isHome: true, isUserLoggedIn: false, user: req.user});
+			}
+			// render the page and pass in any flash data if it exists
+		})
+
+		app.get("/home", function(req, res) {
+			if (req.user) {
+				res.render('index', { isHome: true, isUserLoggedIn: true, user: req.user});
+			}
+			else {
+				res.render('index', { isHome: true, isUserLoggedIn: false, user: req.user});
 			}
 			// render the page and pass in any flash data if it exists
 		})
@@ -27,7 +34,6 @@ module.exports = function(app, passport) {
 		app.get('/signup', function(req, res) {
 			res.render('signup', { isUserLoggedIn: false, message: req.flash('signupMessage')[0]});
 		})	
-
 
 		// process the signup form
 		app.post('/signup', passport.authenticate('local-signup', {
@@ -45,7 +51,6 @@ module.exports = function(app, passport) {
 		})
 
 		app.put("/api/users", function(req, res) {
-			console.log("made it");
 			db.User.update({
 				fname: req.body.fname,
 				lname: req.body.lname,
@@ -58,17 +63,17 @@ module.exports = function(app, passport) {
 				venue: req.body.venue,
 				groupsize: req.body.groupsize,
 				eventtype: req.body.eventtype,
-			}, {
+			}, 
+			{
 				where: {
 					id: req.body.id
 				}
-				})
-				.then(function(dbUser) {
+			})
+				.then(function(dbUser){
+					console.log("User created.");
 					res.json(dbUser);
-					console.log(req.user);
 				});
 		})
-
 		// =====================================
 		// LOGIN ===============================
 		// =====================================
@@ -91,7 +96,7 @@ module.exports = function(app, passport) {
 				failureFlash : true // allow flash messages
 			}),
 			function(req, res) {
-				console.log("hello");
+				console.log("Hello!");
 
 				if (req.body.remember) {
 					req.session.cookie.maxAge = 1000 * 60 * 3;
@@ -100,6 +105,127 @@ module.exports = function(app, passport) {
 				}
 			res.redirect('/');
 		});
+
+		
+		// =====================================
+		// Events/Live/Check-In/Discover Pages =
+		// =====================================
+		
+		
+		app.get("/events", function(req, res) {
+			if (req.user) {
+				res.render('event-list', { isUserLoggedIn: true, user: req.user});
+			}
+			else {
+				res.render('event-list', { isUserLoggedIn: false, user: req.user});
+			}
+			// render the page and pass in any flash data if it exists
+		})
+<<<<<<< HEAD:routes/htmlRoutes.js
+	// =====================================
+	// Events/Live/Check-In/Discover Pages =
+	// =====================================
+	
+  app.get("/discover", function(req, res) {
+=======
+		
+		app.get("/check-in", function(req, res) {
+			if (req.user) {
+				res.render('event-checkin', { isUserLoggedIn: true, user: req.user});
+			}
+			else {
+				res.render('event-checkin', { isUserLoggedIn: false, user: req.user});
+			}	
+		})
+
+		app.get("/discover", function(req, res) {
+>>>>>>> master:routes/routes.js
+			if (req.user) {
+				console.log(req.user);
+				res.render('discover', {isUserLoggedIn: true, user: req.user});
+			}
+			else {
+				console.log(req.user);
+				res.render('discover', {isUserLoggedIn: false, user: req.user});
+			}	
+		})
+
+		// =====================================
+		// LOGOUT ==============================
+		// =====================================
+
+		app.get('/logout', function(req, res) {
+			req.logout();
+			res.redirect('/');
+		});
+
+		// =====================================
+		// API Routes
+		// =====================================
+
+		// GET route for getting all of the Events
+		app.get("/api/events", function(req, res) {
+			db.Event.findAll({
+				}).then(function(dbEvent) {
+					console.log(dbEvent);
+					res.json(dbEvent);
+				})
+		})
+			
+			
+			// var query = {};
+			// if (req.query.user_id) {
+			// 	query.UserId = req.query.User_id;
+			// }
+			// db.Event.findAll({
+			// 	where: query
+			// }).then(function(dbEvent) {
+			// 	res.json(dbEvent);
+			// })
+			// })
+	
+	    // Get route for retrieving a single Event
+	    app.get("/api/events/:id", function(req, res) {
+			db.Event.findOne({
+				where: {
+				id: req.params.id
+				}
+			}).then(function(dbEvent) {
+				console.log(dbEvent);
+				res.json(dbEvent);
+			})
+	    })
+	
+	    // Event route for saving a new Event
+	    app.post("/api/events", function(req, res) {
+			db.Event.create(req.body).then(function(dbEvent) {
+				res.json(dbEvent);
+			})
+	    })
+	
+	    // PUT route for updating Events
+	    app.put("/api/events", function(req, res) {
+			db.Event.update(
+				req.body,
+				{
+				where: {
+					id: req.body.id
+				}
+				}).then(function(dbEvent) {
+				res.json(dbEvent);
+			})
+		})
+
+	    // DELETE route for deleting Events
+	    app.delete("/api/Events/:id", function(req, res) {
+				db.Event.destroy({
+					where: {
+					id: req.params.id
+					}
+				}).then(function(dbEvent) {
+					res.json(dbEvent);
+				})
+		})
 
 		// =====================================
 		// PROFILE SECTION =========================
@@ -114,131 +240,8 @@ module.exports = function(app, passport) {
 				res.render('profile', { isUserLoggedIn: true, user: req.user});
 			}
 			else {
-				console.log(req.user);
-				res.render('profile', { isUserLoggedIn: false, user: req.user});
+				alert("No profile found.")
 			}
-		})
-	// =====================================
-	// Events/Live/Check-In/Discover Pages =
-	// =====================================
-	
-  app.get("/discover", function(req, res) {
-			if (req.user) {
-				console.log(req.user);
-				res.render('discover', {isUserLoggedIn: true, user: req.user});
-			}
-			else {
-				console.log(req.user);
-				res.render('discover', {isUserLoggedIn: false, user: req.user});
-			}	})
-  
-	app.get("/events", function(req, res) {
-		// db.Example.findAll({}).then(function(dbExamples) {
-			res.render("event-list");
-			// , {
-				// msg: "Welcome!",
-				// examples: dbExamples
-			// });
-		// });
-	})
-	
-	app.get("/live", function(req, res) {
-		// db.Example.findAll({}).then(function(dbExamples) {
-			res.render("events-now");
-			// , {
-				// msg: "Welcome!",
-				// examples: dbExamples
-			// });
-		// });
-	})
-	
-	app.get("/check-in", function(req, res) {
-		if (req.user) {
-			res.render('event-checkin', { isUserLoggedIn: true, user: req.user});
-		}
-		else {
-			res.render('event-checkin', { isUserLoggedIn: false, user: req.user});
-		}	})
-
-		// =====================================
-		// LOGOUT ==============================
-		// =====================================
-
-		app.get('/logout', function(req, res) {
-			req.logout();
-			res.redirect('/');
-		});
-
-		// =====================================
-		// Events/Live/Check-In/Discover Pages =
-		// =====================================
-		
-		app.get("/events", function(req, res) {
-				res.render("event-list");
-		})
-		
-		app.get("/live", function(req, res) {
-				res.render("events-now");
-		})
-		
-		app.get("/check-in", function(req, res) {
-				res.render("event-checkin");
-		})
-
-	 // GET route for getting all of the Events
-	 app.get("/api/events", function(req, res) {
-		var query = {};
-		if (req.query.user_id) {
-		  query.UserId = req.query.User_id;
-		}
-		db.Event.findAll({
-		  where: query
-		}).then(function(dbEvent) {
-		  res.json(dbEvent);
-		})
-	  })
-	
-	  // Get route for retrieving a single Event
-	  app.get("/api/events/:id", function(req, res) {
-		db.Event.findOne({
-		  where: {
-			id: req.params.id
-		  }
-		}).then(function(dbEvent) {
-		  console.log(dbEvent);
-		  res.json(dbEvent);
-		})
-	  })
-	
-	  // Event route for saving a new Event
-	  app.post("/api/events", function(req, res) {
-		db.Event.create(req.body).then(function(dbEvent) {
-		  res.json(dbEvent);
-		})
-	  })
-	
-	  // DELETE route for deleting Events
-	  app.delete("/api/Events/:id", function(req, res) {
-		db.Event.destroy({
-		  where: {
-			id: req.params.id
-		  }
-		}).then(function(dbEvent) {
-		  res.json(dbEvent);
-		})
-	  })
-	
-	  // PUT route for updating Events
-	  app.put("/api/events", function(req, res) {
-		db.Event.update(
-		  req.body,
-		  {
-			where: {
-			  id: req.body.id
-			}
-		  }).then(function(dbEvent) {
-		  res.json(dbEvent);
-		})
 		})
 
 		// =====================================
