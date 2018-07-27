@@ -1,6 +1,11 @@
 <!-- Hidden Element Containing Value of Logged In UserID -->
 <input type="hidden" value="{{user.id}}" id="user-id">
 
+<!-- Hidden Loading Element GIF-->
+<div class="w3-display-middle" id="loading">
+    <img src="/assets/img/loading.gif" style="position:fixed;" width="200px">
+</div>
+
 <!-- Content -->
 <div class="w3-display-container w3-content discover" style="max-width:1500px;">
     <img class="w3-image background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px;" width="1500">
@@ -9,21 +14,72 @@
             <div class="w3-container w3-text-white">
                 <h1 class="w3-text-white" id="logo">Find Events Happening Near You</h1>
             </div>
-            </div>
-            <button class="w3-btn w3-white w3-text-red w3-border get-events w3-right">Search Events</button>
-            <div class="w3-row w3-row-padding result-row">
-                <div class="w3-container w3-padding-32">
-                    <div class="w3-hide w3-center" id="loading">
-                        <img src="/assets/img/loading.gif" style="position:fixed" width="100px">
-                    </div>
-                    <div id="contain">
-                        <table class="w3-hoverable w3-bordered w3-border" border="0" id="table_scroll">
-                        </table>
-                    </div>   
-                </div>    
-            </div>
         </div>
+
+        <button onclick= "document.getElementById('eventSearchModal').style.display='block'" class="w3-btn w3-white w3-text-red w3-border w3-right">Search Events</button>
+
+        <div class="w3-row w3-row-padding result-row">
+        </div>
+         <div class="w3-container w3-padding-32">
+            <div id="contain">
+                <table class="w3-hoverable w3-bordered w3-border" border="0" id="table_scroll">
+                </table>
+            </div>   
+        </div>  
     </div>
+</div>
+
+<!-- Event Search  Modal -->
+<div id="eventSearchModal" class="w3-modal w3-card">
+  <div class="w3-modal-content">
+
+    <header class="w3-container w3-red"> 
+      <h2>Find Your Perfect Match</h2>
+    </header>
+
+    <div class="w3-container">
+         <div class="input-field col s12">
+            <h2>What is your location?</h2>
+            <input class="w3-input" id="location" type="text">
+        </div>
+            <div class="input-field col s12">
+            <h2>Select An Event Type:</h2>
+            <select class="w3-input" id="cat">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="music">Concerts</option>
+                <option value="conference">Conferences</option>
+                <option value="comedy">Comedy</option>
+                <option value="movies_film">Film</option>
+                <option value="food">Food</option>
+                <option value="fundraisers">Fundraisers</option>
+                <option value="art">Galleries</option>
+                <option value="support">Health</option>
+                <option value="fundraisers">Holiday</option>
+                <option value="family_fun_kids">Kids & Family</option>
+                <option value="11">Literary</option>
+                <option value="12">Movies</option>
+                <option value="13">Museums</option>
+                <option value="community">Neighborhood</option>
+                <option value="15">Network</option>
+                <option value="16">Nightlife</option>
+                <option value="17">Organizations</option>
+                <option value="18">On Campus</option>
+                <option value="19">Outdoors</option>
+                <option value="20">Performing Arts</option>
+                <option value="21">Pets</option>
+                <option value="22">Politics</option>
+            </select><br>
+        </div>
+
+    </div>
+
+    <footer class="w3-container w3-padding w3-red">
+        <button onclick="document.getElementById('eventSearchModal').style.display='none'"  class="w3-btn w3-white w3-text-red w3-border get-events w3-left">Search Events</button>
+     <span onclick="document.getElementById('eventSearchModal').style.display='none'" 
+      class="w3-button w3-display-bottomright">&times;</span>
+    </footer>
+
+  </div>
 </div>
 
 <!-- Event Information Modal -->
@@ -53,3 +109,36 @@
 
   </div>
 </div>
+
+
+<script>
+
+    function pageScroll() {  
+      var objDiv = document.getElementById("contain");
+      objDiv.scrollTop = objDiv.scrollTop + 1;  
+      $('p:nth-of-type(1)').html('scrollTop : '+ objDiv.scrollTop);
+      $('p:nth-of-type(2)').html('scrollHeight : ' + objDiv.scrollHeight);
+      if (objDiv.scrollTop == (objDiv.scrollHeight - 380)) {
+        objDiv.scrollTop = 0;
+      }
+      my_time = setTimeout('pageScroll()', 25);
+    };
+
+    // ---- Scrolling Table Of Events
+    $(document).ready(function() {
+      pageScroll();
+       $("#contain").mouseover(function() {
+        clearTimeout(my_time);
+     }).mouseout(function() {
+        pageScroll();
+      });
+    });
+
+     //  $(document).on('mouseenter', '#result-panel', function () {
+     //   $(this).find(":button").show();
+     //   }).on('mouseleave', '#result-panel', function () {
+     //   $(this).find(":button").hide();
+     //   });
+   // });
+
+</script>
