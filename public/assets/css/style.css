@@ -108,8 +108,12 @@ td {
   border-style: groove;
 }
 
+#result-panel {
+  opacity: .8;
+  font-family: "Poppins", sans-serif;
+}
 
-#result-panel:hover{opacity:.8}
+#result-panel:hover{opacity:.5}
 
 #learn-more-btn {
   display: none;
@@ -261,24 +265,30 @@ td {
     padding: 20px;
   }
 
-  #event-title ,td {
+  #event-title {
     width: 25%; 
     overflow: hidden; /* make sure it hides the content that overflows */
     white-space: nowrap; /* don't break the line */
     text-overflow: ellipsis;
     display: inline-block;
-    font-family: montserrat, arial, verdana;
+    font-family: "Poppins", sans-serif;
     font-size: 18px;
+    font-weight: 800;
   }
 
   #scroll-row {
     opacity: .8;
+    margin: 5px;
+    height: 45px;
   }
 
+  .learn-more{
+    margin: 5px;
+  }
 /* ---------  Complete Profile Form  --------- */
 
   body {
-    font-family: montserrat, arial, verdana;
+    font-family: "Poppins", sans-serif;
   }
 
   h6, .close, #settings {
