@@ -22,12 +22,15 @@
         </div>
          <div class="w3-container w3-padding-32">
             <div id="contain">
-                <table class="w3-hoverable w3-bordered w3-border" border="0" id="table_scroll">
+                <table class="w3-hoverable w3-bordered w3-border w3-mobile" border="0" id="table_scroll">
                 </table>
             </div>   
         </div>  
     </div>
 </div>
+
+<div id="startLat"></div>
+<div id="startLon"></div>
 
 <!-- Event Search  Modal -->
 <div id="eventSearchModal" class="w3-modal w3-card">
@@ -118,15 +121,11 @@
 
 <script>
 
-
-
-
     // ---- Scrolling Table Of Events
 
   $(function() {
     // Gets events from our database to display in each profile.
     //var userID = $("#user-id").val();
-    loadScrollTable();
     pageScroll();
      $("#contain").mouseover(function() {
         clearTimeout(my_time);

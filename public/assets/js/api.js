@@ -1,15 +1,60 @@
+var latitude;
+var longitude;
+var currentLocation;
+
+$(function() {
+        
+    var startPos;
+    var nudge = document.getElementById("nudge");
+
+    var showNudgeBanner = function() {
+        nudge.style.display = "block";
+    };
+
+    var hideNudgeBanner = function() {
+        nudge.style.display = "none";
+    };
+
+    var nudgeTimeoutId = setTimeout(showNudgeBanner, 2000);
+
+
+    var geoSuccess = function(position) {
+        hideNudgeBanner();
+        // We have the location, don't display banner
+        clearTimeout(nudgeTimeoutId);
+
+        // Do magic with location
+        startPos = position;
+
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+
+        console.log(latitude,longitude);
+        var currentLocation = latitude+","+longitude;
+        console.log("Current location: "+currentLocation);
+
+    };
+
+    var geoError = function(error) {
+        switch(error.code) {
+        case error.TIMEOUT:
+            // The user didn't accept the callout
+            showNudgeBanner();
+            break;
+        }
+    };
+
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    setTimeout(loadScrollTable,4000);
+});
+
 function loadScrollTable() {
 
     var data;
-    const googleAPIKey = "AIzaSyCBuDVv2cDdn68f2kmr6Q0sEldwPxjBRTw";
-    var modalShow = false;
+
+    //const googleAPIKey = "AIzaSyCBuDVv2cDdn68f2kmr6Q0sEldwPxjBRTw";
+
     var eventData = [];
-    var oArgsSearch = function ( name ) {
-        this.name = name;
-        this.app_key = "7NcRZmf2tJjpdF89";
-        page_size = 30;
-        sort_order: "popularity";
-    };
 
     var oArgs = {
 
@@ -17,11 +62,9 @@ function loadScrollTable() {
 
         q: "music",
 
-        where: "Austin",
+        within: 20,
 
-        location: "Austin Texas",
-
-        // "date": "2013061000-2015062000",
+        location: "Austin, TX",
 
         page_size: 35,
 
@@ -30,7 +73,7 @@ function loadScrollTable() {
     };
 
     // API CALL as soon as page loads to display scrolling events nearby.
-    EVDB.API.call( "/events/search", oArgs, function ( oData ) {
+    EVDB.API.call( "/events/search", oArgs, function (oData) {
         data = JSON.stringify(oData);
         console.log(oData);
         for (var i = 0; i < 30; i++) {
@@ -69,7 +112,9 @@ function loadScrollTable() {
             eventData.push(eventObj);
         }
         console.log(eventData);
+
         document.getElementById("loading").classList.add("w3-hide");
+
         for ( var i = 0; i < 30; i++ ) {
 
             tr=$("<tr>").addClass("w3-card w3-padding w3-white").attr("id", "scroll-row");

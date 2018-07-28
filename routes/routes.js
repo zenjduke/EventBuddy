@@ -108,19 +108,10 @@ module.exports = function(app, passport) {
 
 		
 		// =====================================
-		// Events/Live/Check-In/Discover Pages =
+		// Check-In/Discover Pages 
 		// =====================================
 		
 		
-		app.get("/events", function(req, res) {
-			if (req.user) {
-				res.render('event-list', { isUserLoggedIn: true, user: req.user});
-			}
-			else {
-				res.render('event-list', { isUserLoggedIn: false, user: req.user});
-			}
-			// render the page and pass in any flash data if it exists
-		})
 		
 		app.get("/check-in", function(req, res) {
 			if (req.user) {
