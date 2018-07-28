@@ -45,29 +45,34 @@
             <div class="input-field col s12">
             <h2>Select An Event Type:</h2>
             <select class="w3-input" id="cat">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="music">Concerts</option>
-                <option value="conference">Conferences</option>
-                <option value="comedy">Comedy</option>
-                <option value="movies_film">Film</option>
-                <option value="food">Food</option>
-                <option value="fundraisers">Fundraisers</option>
-                <option value="art">Galleries</option>
-                <option value="support">Health</option>
-                <option value="fundraisers">Holiday</option>
-                <option value="family_fun_kids">Kids & Family</option>
-                <option value="11">Literary</option>
-                <option value="12">Movies</option>
-                <option value="13">Museums</option>
-                <option value="community">Neighborhood</option>
-                <option value="15">Network</option>
-                <option value="16">Nightlife</option>
-                <option value="17">Organizations</option>
-                <option value="18">On Campus</option>
-                <option value="19">Outdoors</option>
-                <option value="20">Performing Arts</option>
-                <option value="21">Pets</option>
-                <option value="22">Politics</option>
+              <option value="" disabled selected>Choose your option</option>
+                    <option value="music">Concerts</option>
+                    <option value="conference">Conferences</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="movies_film">Film</option>
+                    <option value="food">Food</option>
+                    <option value="fundraisers">Fundraisers</option>
+                    <option value="art">Galleries</option>
+                    <option value="support">Health</option>
+                    <option value="fundraisers">Holiday</option>
+                    <option value="family_fun_kids">Kids & Family</option>
+                    <option value="books">Literary</option>
+                    <option value="movies_film">Movies</option>
+                    <option value="attractions">Museums</option>
+                    <option value="community">Neighborhood</option>
+                    <option value="business">Business & Networking</option>
+                    <option value="singles_social">Nightlife</option>
+                    <option value="clubs_associations">Organizations</option>
+                    <option value="schools_alumni">On Campus</option>
+                    <option value="outdoors_recreation">Outdoors</option>
+                    <option value="performing_arts">Performing Arts</option>
+                    <option value="pets">Pets</option>
+                    <option value="politics_activism">Politics</option>
+                    <option value="sales">Sales & Retail</option>
+                    <option value="science">Science</option>
+                    <option value="religion_spirituality">Religion & Spirituality</option>
+                    <option value="sports">Sports</option>
+                    <option value="technology">Technology</option>
             </select><br>
         </div>
 
@@ -113,32 +118,22 @@
 
 <script>
 
-    function pageScroll() {  
-      var objDiv = document.getElementById("contain");
-      objDiv.scrollTop = objDiv.scrollTop + 1;  
-      $('p:nth-of-type(1)').html('scrollTop : '+ objDiv.scrollTop);
-      $('p:nth-of-type(2)').html('scrollHeight : ' + objDiv.scrollHeight);
-      if (objDiv.scrollTop == (objDiv.scrollHeight - 380)) {
-        objDiv.scrollTop = 0;
-      }
-      my_time = setTimeout('pageScroll()', 25);
-    };
+
+
 
     // ---- Scrolling Table Of Events
-    $(document).ready(function() {
-      pageScroll();
-       $("#contain").mouseover(function() {
+
+  $(function() {
+    // Gets events from our database to display in each profile.
+    //var userID = $("#user-id").val();
+    loadScrollTable();
+    pageScroll();
+     $("#contain").mouseover(function() {
         clearTimeout(my_time);
      }).mouseout(function() {
         pageScroll();
       });
-    });
+  });
 
-     //  $(document).on('mouseenter', '#result-panel', function () {
-     //   $(this).find(":button").show();
-     //   }).on('mouseleave', '#result-panel', function () {
-     //   $(this).find(":button").hide();
-     //   });
-   // });
 
 </script>
