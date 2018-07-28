@@ -1,2 +1,2 @@
-# ProjectX
-The 2nd project
+# EventBuddy
+Discover. Check In. Connect. 
