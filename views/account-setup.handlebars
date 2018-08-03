@@ -5,7 +5,6 @@
     <div class="w3-padding">
       <div class="w3-container" id="account-setup" style="max-width: 600px;">
         <form id="msform">
-          <h3>Welcome {{user.username}}!</h3>
           <h2>Set Up Your Account</h2>
           <!-- progressbar -->
           <ul id="progressbar">
@@ -17,17 +16,58 @@
           <fieldset>
             <h2 class="fs-title">Personal Details</h2>
             <h3 class="fs-subtitle">We will never share your information.</h3>
-            <input type="text" name="fname" id="fname" placeholder="First Name" />
-            <input type="text" name="lname" id="lname" placeholder="Last Name" />
             <input type="text" name="phone" id="phone" placeholder="Phone" />
             <input type="text" name="email" id="email" placeholder="Email" />
-            <input type="text" name="profilepic" id="profilepic" placeholder="Add A Link To Your Profile Picture">
             <input type="button" name="previous" class="previous action-button" value="Previous" />
             <input type="button" name="next" class="next action-button" value="Next" />
           </fieldset>
           <fieldset>
             <h2 class="fs-title">Social Profiles</h2>
             <h3 class="fs-subtitle">Your presence on the social network</h3>
+
+            <div class="profile">
+                    <div class="photo">
+                      <input type="file" accept="image/*">
+                      <div class="w3-center photo__helper">
+                          <div class="photo__frame photo__frame--circle">
+
+                            <canvas class="photo__canvas"></canvas>
+                            <div class="message is-empty">
+                              <p class="message--desktop">Drop your photo here or browse your computer.</p>
+                              <p class="message--mobile">Tap here to select your picture.</p>
+                            </div>
+                            <div class="message is-loading">
+                              <i class="fa fa-2x fa-spin fa-spinner"></i>
+                            </div>
+                            <div class="message is-dragover">
+                              <i class="fa fa-2x fa-cloud-upload"></i>
+                              <p>Drop your photo.</p>
+                            </div>
+                            <div class="message is-wrong-file-type">
+                              <p>Only images allowed.</p>
+                              <p class="message--desktop">Drop your photo here or browse your computer.</p>
+                              <p class="message--mobile">Tap here to select your picture.</p>
+                            </div>
+                            <div class="message is-wrong-image-size">
+                              <p>Your photo must be larger than 350px.</p>
+                            </div>
+
+                          </div>
+                      </div>
+
+                    <div class="photo__options hide">
+                      <div class="photo__zoom">
+                        <input type="range" class="zoom-handler">
+                      </div>
+                      <a href="javascript:;" class="remove">
+                        <i class="fa fa-trash"></i>
+                      </a>
+                    </div>
+                    <button type="w3-btn w3-border w3-bottom-right" id="previewBtn">Preview</button>
+                    <img src="" alt="" class="preview preview--rounded">
+                </div>
+            </div>
+  
             <input type="text" name="twitter" id="twitter" placeholder="Twitter" />
             <input type="text" name="facebook" id="facebook" placeholder="Facebook" />
             <input type="text" name="gplus" id="gplus" placeholder="Google Plus" />
@@ -50,18 +90,6 @@
             </div>
             <hr>
             <div class="form-group">
-              <h4>How many people are in your group?</h4>
-              <label for="groupsize">Select list:</label>
-              <select class="form-control w3-select" id="groupsize">
-                <option value="Just me!">Just me!</option>
-                <option value="2-3">2-3</option>
-                <option value="4-6">4-6</option>
-                <option value="6-15">6-15</option>
-                <option value="15+">15+</option>
-              </select>
-            </div>
-            <hr>
-            <div class="form-group">
               <h4>What type of events do you like to attend?</h4>
               <label for="eventtype">Select list:</label>
               <select class="form-control w3-select" id="eventtype">
@@ -73,7 +101,7 @@
               </select>
             </div>
             <input type="button" name="previous" class="previous action-button" value="Previous" />
-            <input type="submit" name="submit" class="setup-btn submit action-button" data-id="{{user.id}}" value="Submit" />
+            <input type="submit" name="submit" class="update-btn submit action-button" data-id="{{user.id}}" value="Submit" />
           </fieldset>
         </form>
       </div>

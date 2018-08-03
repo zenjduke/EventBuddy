@@ -51,7 +51,7 @@ $(document).on("click", ".get-events", function (e) {
 
         `<div class="w3-panel w3-display-container w3-card w3-white" id="result-panel" 
           onclick ="document.getElementById('infoModal').style.display='block'"
-          id=result-panel" data-id=${eventObj.id} title="${eventObj.title}"
+          id=result-panel" title="${eventObj.title}"
           venue="${eventObj.venue}" venueURL="${eventObj.venueURL}"
           city="${eventObj.city_name}" time=${eventObj.time} user-id=${id}>
           <div>
@@ -73,7 +73,6 @@ $(document).on("click", "#result-panel", function (e) {
 
   e.preventDefault();
 
-  var id = $(this).data("id");
   var user = $("#user-id").val();
   var title = $(this).attr("title");
   var venue = $(this).attr("venue");
@@ -118,9 +117,7 @@ $(document).on("click", "#result-panel", function (e) {
 
     console.log("NEW EVENT ADDED.");
     $(this).empty().text("Attending");
-
     addEvent(newEvent);
-
     }
 
     else {
@@ -135,17 +132,13 @@ $(document).on("click", ".learn-more", function (e) {
 
   e.preventDefault();
 
-  var id = $(this).data("id");
   var user = $("#user-id").val();
   var title = $(this).attr("title");
   var venue = $(this).attr("venue");
   var city = $(this).attr("city");
   var time = $(this).attr("time");
-  console.log(time);
   var venue_url = $(this).attr("venueURL");
   var img = $("#resImg").attr("src");
-
-  console.log(id);
 
   $("#modalTitle").empty().text(title);
   $("#modalTime").empty().text(time);
@@ -158,17 +151,13 @@ $(document).on("click", ".learn-more", function (e) {
     //This function adds a selected event in our database
 
     e.preventDefault();
-  
-    // var id = $(this).data("id");
-    // var user = $("#user-id").val();
-    // var titleSelected =  $("#modalTitle").val();
+
     console.log(title);
 
     if (user) {
       console.log(user);
 
       var newEvent = {
-        eventID: id,
         eventTitle: title,
         eventVenue: venue,
         eventLocation: city,
@@ -193,47 +182,41 @@ $(document).on("click", ".learn-more", function (e) {
 
 });
 
+
 // UPDATES user account to include personal details.
-
-$(document).on("click", ".setup-btn", function (e) {
-
+$(document).on("click", ".update-btn", function (e) {
     e.preventDefault();
 
     var id = $(this).data("id");
-
     console.log("User ID: " + id);
 
-    var newAccount = {
-      id: id,
-      fname: $("#fname").val().trim(),
-      lname: $("#lname").val().trim(),
-      phone: $("#phone").val().trim(),
-      email: $("#email").val().trim(),
-      profilePic: $("#profilepic").val().trim(),
-      twitter: $("#twitter").val().trim(),
-      facebook: $("#facebook").val().trim(),
-      gplus: $("#gplus").val().trim(),
-      venue: $("#venue option:selected").val(),
-      groupsize: $("#groupsize option:selected").val(),
-      eventtype: $("#eventtype option:selected").val(),
-    };
+    updateAccount(id);
 
-    console.log("NEW ACCOUNT CREATED FOR " + newAccount.fname + ".");
+});
 
-    createAccount(newAccount);
-  })
+// This function updates a user account in our database.
+function updateAccount(id) {
 
+  var userInfo = {
+    id: id,
+    phone: $("#phone").val().trim(),
+    email: $("#email").val().trim(),
+    profilePic: $("#profilepic").val().trim(),
+    twitter: $("#twitter").val().trim(),
+    facebook: $("#facebook").val().trim(),
+    gplus: $("#gplus").val().trim(),
+    venue: $("#venue option:selected").val(),
+    eventtype: $("#eventtype option:selected").val(),
+  };
 
-// This function updates a todo in our database
-function createAccount(info) {
   $.ajax({
     method: "PUT",
     url: "/api/users",
-    data: info
+    data: userInfo
   }).then(
     location.href = "profile",
-  );
-};
+  )};
+
 
 function getUserEvents(user) {
   userID = user || "";
@@ -257,10 +240,12 @@ function getUserEvents(user) {
 });
 };
 
-// This function adds a user-selected event in our database
+// Adds a user-selected event to our database.
 function addEvent(info) {
   $.post("/api/events", info, function() {
     alert("Attending Event!");
   });
 };
+
+
 

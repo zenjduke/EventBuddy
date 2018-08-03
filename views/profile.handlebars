@@ -1,10 +1,9 @@
-
 <!-- Content -->
 <div class="w3-display-container w3-content" style="max-width:1500px;">
   <img class="background-image" src="assets/img/concert3.jpg" alt="concert-scene" style="min-width:1000px" width="1500">
   <div class="w3-main" style="margin-left:260px;margin-right:40px">
     <div class="w3-container w3-text-white profile">
-      <h1 class="w3-text-white" id="logo">Profile</h1>   
+      <h1 class="w3-text-white" id="logo">Profile</h1>
       <img class="w3-image w3-display-topright" id="profilepic-div" src="{{user.profilepic}}" />
     </div>
     <hr width="60%">
@@ -14,66 +13,30 @@
       <h2>Friends</h2>
       <div>
         <img class="friend" src="/assets/img/avatars/avatar1.png">
-        <img class="friend"  src="/assets/img/avatars/avatar5.png">
-        <img class="friend"  src="/assets/img/avatars/avatar9.png">
+        <img class="friend" src="/assets/img/avatars/avatar5.png">
+        <img class="friend" src="/assets/img/avatars/avatar9.png">
       </div>
       <button class="w3-btn w3-border w3-red" type="submit">Connect With New Friends</button>
     </div>
     <hr>
 
     <!--Calendar-->
-    {{!-- <div class="w3-container w3-white">
+    {{!--
+    <div class="w3-container w3-white">
       <div id='calendar'></div>
     </div> --}}
 
     <!--Past Events-->
     <div class="w3-container w3-text-white" id="past-events">
-        <h2>Upcoming Events</h2>
-        <div class="event-table w3-row-padding w3-padding-16 w3-text-white w3-large">
+      <h2>Upcoming Events</h2>
+      <div class="event-table w3-row-padding w3-padding-16 w3-text-white w3-large">
       </div>
     </div>
-    
-      <!-- Profile Settings Modal -->
 
-      <div id="settings" class="w3-modal">
-        <div class="w3-modal-content">
-
-          <header class="w3-container w3-red">
-            <span onclick="document.getElementById('settings').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-            <h2>My Account</h2>
-          </header>
-
-          <div class="w3-container">
-            <table class="w3-bordered" id="account-info">
-              <tbody>
-                <tr>
-                  <th>Name:</th>
-                  <td>{{user.fname}} {{user.lname}}</td>
-                </tr>
-                <tr>
-                  <th>Email:</th>
-                  <td>{{user.email}}</td>
-                </tr>
-                <tr>
-                  <th>Phone:</th>
-                  <td>{{user.phone}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <footer class="w3-container w3-red">
-            <a href="/logout" class="w3-btn w3-red w3-border w3-right logout">Logout</a>
-            <button href="/account-settings" class="w3-btn w3-border w3-red w3-left update">Update Information</button>
-          </footer>
-
-        </div>
-      </div>
-
-<script>
-  $(function () {
-    // Gets events from our database to display in each profile.
-    //var userID = $("#user-id").val();
-    getUserEvents();
-  });
-</script>
+    <script>
+      $(function () {
+        // Gets events from our database to display in each profile.
+        //var userID = $("#user-id").val();
+        getUserEvents();
+      });
+    </script>

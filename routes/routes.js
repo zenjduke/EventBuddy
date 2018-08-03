@@ -70,7 +70,7 @@ module.exports = function(app, passport) {
 				}
 			})
 				.then(function(dbUser){
-					console.log("User created.");
+					console.log("User updated.");
 					res.json(dbUser);
 				});
 		})

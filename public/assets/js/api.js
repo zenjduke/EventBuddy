@@ -124,7 +124,7 @@ function loadScrollTable() {
 
             learnCol=$("<td>");
 
-            learnBtn = $("<button>").text("Get Info").attr("data-id",eventData[i].id).attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("venue",eventData[i].venue).attr("time",eventData[i].time).addClass("w3-btn w3-red w3-border learn-more").attr("user-id", "1").attr("onclick","document.getElementById('infoModal').style.display='block'");
+            learnBtn = $("<button>").text("Get Info").attr("title",eventData[i].title).attr("venue",eventData[i].venue).attr("time",eventData[i].time).attr("time",eventData[i].time).addClass("w3-btn w3-red w3-border learn-more").attr("onclick","document.getElementById('infoModal').style.display='block'");
 
             learnCol.append(learnBtn);
 
