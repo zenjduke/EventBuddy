@@ -26,13 +26,16 @@ $(function() {
         // Do magic with location
         startPos = position;
 
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
+        latitude = (position.coords.latitude).toFixed(6);
+        longitude = (position.coords.longitude).toFixed(6);
 
         console.log(latitude,longitude);
-        var currentLocation = latitude+","+longitude;
+        var currentLocation = latitude+", "+longitude;
         console.log("Current location: "+currentLocation);
 
+        setTimeout(function() {
+            loadScrollTable(currentLocation);
+        }, 4000);
     };
 
     var geoError = function(error) {
@@ -45,17 +48,14 @@ $(function() {
     };
 
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-    setTimeout(loadScrollTable,4000);
+    
 });
 
-function loadScrollTable() {
+function loadScrollTable(currentLocation) {
 
-    var data;
-
+    //var data;
     //const googleAPIKey = "AIzaSyCBuDVv2cDdn68f2kmr6Q0sEldwPxjBRTw";
-
     var eventData = [];
-
     var oArgs = {
 
         app_key: "7NcRZmf2tJjpdF89",
@@ -64,7 +64,7 @@ function loadScrollTable() {
 
         within: 20,
 
-        location: "Austin, TX",
+        location: currentLocation,
 
         page_size: 35,
 
@@ -76,6 +76,7 @@ function loadScrollTable() {
     EVDB.API.call( "/events/search", oArgs, function (oData) {
         data = JSON.stringify(oData);
         console.log(oData);
+        console.log(oArgs);
         for (var i = 0; i < 30; i++) {
             var eventObj = [];
             if ( oData.events.event[i].title != null ) {
