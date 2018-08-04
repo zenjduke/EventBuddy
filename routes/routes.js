@@ -61,7 +61,6 @@ module.exports = function(app, passport) {
 				facebook: req.body.facebook,
 				gplus: req.body.gplus,
 				venue: req.body.venue,
-				groupsize: req.body.groupsize,
 				eventtype: req.body.eventtype,
 			}, 
 			{
