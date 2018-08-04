@@ -56,7 +56,7 @@ module.exports = function(app, passport) {
 				lname: req.body.lname,
 				phone: req.body.phone,
 				email: req.body.email,
-				// profilepic: req.body.profilepic,
+				profilepic: req.body.profilepic,
 				twitter: req.body.twitter,
 				facebook: req.body.facebook,
 				gplus: req.body.gplus,

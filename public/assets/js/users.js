@@ -201,7 +201,7 @@ function updateAccount(id) {
     id: id,
     phone: $("#phone").val().trim(),
     email: $("#email").val().trim(),
-    // profilePic: $("#profilepic").val().trim(),
+    profilePic: $("#profilepic").val().trim(),
     twitter: $("#twitter").val().trim(),
     facebook: $("#facebook").val().trim(),
     gplus: $("#gplus").val().trim(),
