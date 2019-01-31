@@ -17,18 +17,18 @@ jQuery, MySQL, Sequelize, Passport.js, Express, Node.js, GoogleMaps API, [Eventf
 
 Clone this repo:
 
-$ git clone git@github.com:zenjduke/School.git
+`$ git clone git@github.com:zenjduke/School.git`
 
 Open the folder:
 
-$ cd School\
+`$ cd School\`
 
 Install all dependancies:
 
-$ yarn install
+`$ yarn install`
 
 Start the app:
 
-$ yarn start
+`$ yarn start`
 
 The app will be automatically in your browser at http://localhost:3000/.
