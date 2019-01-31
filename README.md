@@ -7,6 +7,8 @@ EventBuddy was developed as a midterm team project in the UT-Austin Web Developm
 
 My role in the project was coding the front-end and user authentication.
 
+EventBuddy is deployed on Heroku here. [https://event-buddy-app.herokuapp.com/]
+
 ## Technologies Used
 
 jQuery, MySQL, Sequelize, Passport.js, Express, Node.js, GoogleMaps API, Eventful API [http://api.eventful.com/]
