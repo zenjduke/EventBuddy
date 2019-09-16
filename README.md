@@ -13,22 +13,3 @@ EventBuddy is deployed on Heroku [here.](https://event-buddy-app.herokuapp.com/)
 
 jQuery, MySQL, Sequelize, Passport.js, Express, Node.js, GoogleMaps API, [Eventful API](http://api.eventful.com/)
 
-## Installation and Use
-
-Clone this repo:
-
-`$ git clone git@github.com:zenjduke/EventBuddy.git`
-
-Open the folder:
-
-`$ cd EventBuddy\`
-
-Install all dependancies:
-
-`$ yarn install`
-
-Start the app:
-
-`$ yarn start`
-
-The app will be automatically in your browser at http://localhost:3000/.
