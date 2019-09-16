@@ -17,7 +17,7 @@ jQuery, MySQL, Sequelize, Passport.js, Express, Node.js, GoogleMaps API, [Eventf
 
 Clone this repo:
 
-`$ git clone git@github.com:zenjduke/School.git`
+`$ git clone git@github.com:zenjduke/EventBuddy.git`
 
 Open the folder:
 
