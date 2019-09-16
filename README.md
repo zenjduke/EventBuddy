@@ -21,7 +21,7 @@ Clone this repo:
 
 Open the folder:
 
-`$ cd School\`
+`$ cd EventBuddy\`
 
 Install all dependancies:
 
